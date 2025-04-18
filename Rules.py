@@ -528,6 +528,8 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
             lambda state: state.has("Paper Curse", world.player),
         "Rogueport Sewers Town: Shine Sprite":
             lambda state: StateLogic.ultra_boots(state, world.player),
+        "Rogueport Sewers Town: Star Piece 3":
+            lambda state: StateLogic.super_boots(state, world.player),
         "Rogueport Sewers West Entrance: Flower Saver P":
             lambda state: StateLogic.ultra_boots(state, world.player),
         "Rogueport Sewers Spania Room: Defend Plus":
@@ -581,7 +583,7 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
         "Twilight Trail Fallen Tree: Star Piece 1":
             lambda state: StateLogic.tube_curse(state, world.player),
         "Twilight Trail Fallen Tree: Star Piece 2":
-            lambda state: StateLogic.tube_curse(state, world.player),
+            lambda state: StateLogic.tube_curse(state, world.player) and state.has("Flurrie", world.player),
         "Twilight Trail Dark Woods First Room: 10 Coins":
             lambda state: StateLogic.tube_curse(state, world.player) and state.has("Flurrie", world.player),
         "Twilight Trail Dark Woods First Room: Earthquake":
@@ -698,7 +700,7 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
         "Rogueport Eastside: Shine Sprite 1":
             lambda state: state.has("Yoshi", world.player),
         "Rogueport Eastside: Shine Sprite 2":
-            lambda state: state.has("Paper Curse", world.player) and state.has("Yoshi", world.player),
+            lambda state: state.has("Yoshi", world.player),
         "Rogueport Eastside: Shine Sprite 3":
             lambda state: StateLogic.tube_curse(state, world.player) and state.has("Yoshi", world.player),
         "Rogueport Center: Old Letter":

@@ -118,7 +118,7 @@ class TTYDWorld(World):
                     freq = 1
                 filler_items += [item.itemName for _ in range(freq)]
 
-        remaining = len(all_locations) - len(required_items) - 9
+        remaining = len(all_locations) - len(required_items) - len(self.disabled_locations) - 9
         for i in range(remaining):
             filler_item_name = self.multiworld.random.choice(filler_items)
             item = self.create_item(filler_item_name)
@@ -150,7 +150,6 @@ class TTYDWorld(World):
         return change
 
     def generate_output(self, output_directory: str) -> None:
-        visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")
         patch = TTYDProcedurePatch(player=self.player, player_name=self.multiworld.player_name[self.player])
         write_files(self, patch)
         rom_path = os.path.join(
