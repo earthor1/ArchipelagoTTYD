@@ -95,6 +95,7 @@ class TTYDContext(CommonContext):
     seed_verified: bool = False
     slot_data: dict | None = {}
     checked_locations = set()
+    previous_room = None
 
     def __init__(self, server_address, password):
         super().__init__(server_address, password)
@@ -107,6 +108,7 @@ class TTYDContext(CommonContext):
     def on_package(self, cmd: str, args: dict):
         if cmd in {"Connected"}:
             self.slot = args["slot"]
+            self.team = args["team"]
             self.slot_data = args["slot_data"]
         elif cmd == "Retrieved":
             if "keys" not in args:
@@ -118,6 +120,7 @@ class TTYDContext(CommonContext):
     async def disconnect(self, allow_autoreconnect: bool = False):
         await super().disconnect()
         self.slot = None
+        self.team = None
         self.slot_data = None
         self.checked_locations = set()
         self.seed_name = None
@@ -162,7 +165,7 @@ class TTYDContext(CommonContext):
     def save_loaded(self) -> bool:
         value = dolphin.read_byte(0x80003228)
         return value > 0
-
+    
 async def _run_game(rom: str):
     import os
     auto_start = settings.get_settings().ttyd_options.rom_start
@@ -209,6 +212,16 @@ async def ttyd_sync_task(ctx: TTYDContext):
                     if not ctx.save_loaded():
                         await asyncio.sleep(1)
                         continue
+                    if ctx.previous_room != read_string(ROOM, 6):
+                        logger.info(f"Current Room: {read_string(ROOM, 6)}")
+                        ctx.previous_room = read_string(ROOM, 6)
+                        await ctx.send_msgs([{
+                                "cmd": "Set",
+                                "key": f"ttyd_room_{ctx.team}_{ctx.slot}",
+                                "default": 0,
+                                "want_reply": False,
+                                "operations":[{"operation": "replace","value": read_string(ROOM, 6)}]
+                            }])
                     await ctx.receive_items()
                     await ctx.check_ttyd_locations()
                     if not ctx.finished_game and gsw_check(1708) >= 18:
