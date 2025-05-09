@@ -213,7 +213,6 @@ async def ttyd_sync_task(ctx: TTYDContext):
                         await asyncio.sleep(1)
                         continue
                     if ctx.previous_room != read_string(ROOM, 6):
-                        logger.info(f"Current Room: {read_string(ROOM, 6)}")
                         ctx.previous_room = read_string(ROOM, 6)
                         await ctx.send_msgs([{
                                 "cmd": "Set",
