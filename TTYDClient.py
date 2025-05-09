@@ -95,6 +95,7 @@ class TTYDContext(CommonContext):
     seed_verified: bool = False
     slot_data: dict | None = {}
     checked_locations = set()
+    current_room = read_string(ROOM, 6)
     previous_room = None
 
     def __init__(self, server_address, password):
@@ -212,14 +213,14 @@ async def ttyd_sync_task(ctx: TTYDContext):
                     if not ctx.save_loaded():
                         await asyncio.sleep(1)
                         continue
-                    if ctx.previous_room != read_string(ROOM, 6):
-                        ctx.previous_room = read_string(ROOM, 6)
+                    if ctx.previous_room != ctx.current_room:
+                        ctx.previous_room = ctx.current_room
                         await ctx.send_msgs([{
                                 "cmd": "Set",
                                 "key": f"ttyd_room_{ctx.team}_{ctx.slot}",
                                 "default": 0,
                                 "want_reply": False,
-                                "operations":[{"operation": "replace","value": read_string(ROOM, 6)}]
+                                "operations":[{"operation": "replace","value": ctx.current_room}]
                             }])
                     await ctx.receive_items()
                     await ctx.check_ttyd_locations()
