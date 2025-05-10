@@ -213,14 +213,14 @@ async def ttyd_sync_task(ctx: TTYDContext):
                         await asyncio.sleep(1)
                         continue
                     current_room = read_string(ROOM, 6)
-                    if ctx.previous_room != ctx.current_room:
-                        ctx.previous_room = ctx.current_room
+                    if ctx.previous_room != current_room:
+                        ctx.previous_room = current_room
                         await ctx.send_msgs([{
                                 "cmd": "Set",
                                 "key": f"ttyd_room_{ctx.team}_{ctx.slot}",
                                 "default": 0,
                                 "want_reply": False,
-                                "operations":[{"operation": "replace","value": ctx.current_room}]
+                                "operations":[{"operation": "replace","value": current_room}]
                             }])
                     await ctx.receive_items()
                     await ctx.check_ttyd_locations()
