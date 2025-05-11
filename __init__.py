@@ -6,6 +6,7 @@ from Fill import remaining_fill, fast_fill, fill_restrictive
 from settings import UserFilePath, Group
 from BaseClasses import Tutorial, ItemClassification, CollectionState, Item
 from worlds.AutoWorld import WebWorld, World
+from typing import Dict, Any
 from .Data import starting_partners, limit_eight, stars, chapter_items, limited_location_ids
 from .Locations import all_locations, location_table, pit, location_id_to_name, TTYDLocation, locationName_to_data, \
     palace, riddle_tower
@@ -33,7 +34,7 @@ components.append(
 
 class TTYDWebWorld(WebWorld):
     theme = 'partyTime'
-    bug_report_page = "https://github.com/jamesbrq/ArchipelagoMLSS/issues"
+    bug_report_page = "https://github.com/jamesbrq/ArchipelagoTTYD/issues"
     tutorials = [
         Tutorial(
             tutorial_name='Setup Guide',
@@ -87,6 +88,16 @@ class TTYDWorld(World):
     limited_item_names: set
     limited_items: typing.List[TTYDItem]
     limited_state: CollectionState
+
+    def fill_slot_data(self) -> Dict[str, Any]:
+        return {
+            "ChapterClears": self.options.chapter_clears.value,
+            "PitItems": self.options.pit_items.value,
+            "LimitChapterLogic": self.options.limit_chapter_logic.value,
+            "LimitChapterEight": self.options.limit_chapter_eight.value,
+            "PalaceSkip": self.options.palace_skip.value,
+            "YoshiColor": self.options.yoshi_color.value,
+        }
 
     def generate_early(self) -> None:
         self.disabled_locations = set()
