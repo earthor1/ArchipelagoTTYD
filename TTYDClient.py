@@ -1,4 +1,5 @@
 import asyncio
+import struct
 import subprocess
 import traceback
 import settings
@@ -13,9 +14,8 @@ from worlds.ttyd.Data import location_gsw_info
 from worlds.ttyd.Items import items_by_id, item_type_dict
 
 RECEIVED_INDEX = 0x803DB860
-RECEIVED_ITEM = 0x803DB864
-NAME_LENGTH = 0x800031FF
-PLAYER_NAME = 0x80003200
+RECEIVED_ITEM_ARRAY = 0x80001000
+RECEIVED_LENGTH = 0x80000FFC
 SEED = 0x80003210
 GP_BASE = 0x803DAC18
 GSWF_BASE = 0x178
@@ -103,13 +103,14 @@ class TTYDContext(CommonContext):
     async def server_auth(self, password_requested: bool = False):
         if password_requested and not self.password:
             await super(TTYDContext, self).server_auth(password_requested)
+        await self.get_username()
         await self.send_connect()
 
     def on_package(self, cmd: str, args: dict):
         if cmd in {"Connected"}:
             self.slot = args["slot"]
-            self.team = args["team"]
             self.slot_data = args["slot_data"]
+            self.team = args["team"]
         elif cmd == "Retrieved":
             if "keys" not in args:
                 logger.warning(f"invalid Retrieved packet to TTYDClient: {args}")
@@ -120,8 +121,8 @@ class TTYDContext(CommonContext):
     async def disconnect(self, allow_autoreconnect: bool = False):
         await super().disconnect()
         self.slot = None
-        self.team = None
         self.slot_data = None
+        self.team = None
         self.checked_locations = set()
         self.seed_name = None
         self.seed_verified = False
@@ -137,11 +138,19 @@ class TTYDContext(CommonContext):
         self.ui_task = asyncio.create_task(self.ui.async_run(), name="UI")
 
     async def receive_items(self):
+        current_length = dolphin.read_word(RECEIVED_LENGTH)
+        if current_length > 0:
+            return
         index = dolphin.read_word(RECEIVED_INDEX)
-        for i in range(index, len(self.items_received)):
-            dolphin.write_word(RECEIVED_ITEM, get_rom_item_id(self.items_received[i]))
-            await asyncio.sleep(0.2)
-            dolphin.write_word(RECEIVED_INDEX, i + 1)
+        items = min(len(self.items_received) - index, 255)
+        if items == 0:
+            return
+        item_ids = [get_rom_item_id(self.items_received[i]) for i in range(index, index + items)]
+        packed_data = struct.pack(f'>{len(item_ids)}H', *item_ids)
+        dolphin.write_bytes(RECEIVED_ITEM_ARRAY, packed_data)
+        dolphin.write_word(RECEIVED_LENGTH, items)
+        dolphin.write_word(RECEIVED_INDEX, index + items)
+
 
     async def check_ttyd_locations(self):
         locations_to_send = set()
@@ -165,7 +174,8 @@ class TTYDContext(CommonContext):
     def save_loaded(self) -> bool:
         value = dolphin.read_byte(0x80003228)
         return value > 0
-    
+
+
 async def _run_game(rom: str):
     import os
     auto_start = settings.get_settings().ttyd_options.rom_start
@@ -210,46 +220,28 @@ async def ttyd_sync_task(ctx: TTYDContext):
                             continue
                         ctx.seed_verified = True
                     if not ctx.save_loaded():
-                        await asyncio.sleep(1)
+                        await asyncio.sleep(0.5)
                         continue
                     current_room = read_string(ROOM, 6)
                     if ctx.previous_room != current_room:
                         ctx.previous_room = current_room
                         await ctx.send_msgs([{
-                                "cmd": "Set",
-                                "key": f"ttyd_room_{ctx.team}_{ctx.slot}",
-                                "default": 0,
-                                "want_reply": False,
-                                "operations":[{"operation": "replace","value": current_room}]
-                            }])
+                            "cmd": "Set",
+                            "key": f"ttyd_room_{ctx.team}_{ctx.slot}",
+                            "default": 0,
+                            "want_reply": False,
+                            "operations": [{"operation": "replace", "value": current_room}]
+                        }])
                     await ctx.receive_items()
                     await ctx.check_ttyd_locations()
                     if not ctx.finished_game and gsw_check(1708) >= 18:
                         await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
-                    await asyncio.sleep(0.1)
+                    await asyncio.sleep(.5)
                 except Exception as e:
                     dolphin.un_hook()
                     ctx.dolphin_connected = False
             else:
-                try:
-                    if not ctx.auth:
-                        name_length = dolphin.read_byte(NAME_LENGTH)
-                        if name_length == 0:
-                            ctx.auth = read_string(PLAYER_NAME, 0x10)
-                        else:
-                            ctx.auth = dolphin.read_bytes(PLAYER_NAME, name_length).decode()
-                        if not ctx.auth:
-                            logger.info(f"Name Read: {dolphin.read_bytes(PLAYER_NAME, name_length).decode()}")
-                            ctx.auth = None
-                            logger.info("No slot name was detected. Please load the correct ROM.")
-                            ctx.dolphin_connected = False
-                            dolphin.un_hook()
-                            await asyncio.sleep(3)
-                            continue
-                    await asyncio.sleep(0.1)
-                except Exception as e:
-                    dolphin.un_hook()
-                    ctx.dolphin_connected = False
+                await asyncio.sleep(1)
         else:
             try:
                 logger.info("Attempting to connect to Dolphin...")
@@ -260,7 +252,6 @@ async def ttyd_sync_task(ctx: TTYDContext):
                     await ctx.disconnect()
                     await asyncio.sleep(3)
                     continue
-
                 logger.info("Dolphin connected")
                 ctx.dolphin_connected = True
             except Exception as e:

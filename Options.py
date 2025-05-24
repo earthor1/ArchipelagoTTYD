@@ -44,6 +44,52 @@ class PalaceSkip(Toggle):
     """
     display_name = "Palace Skip"
 
+class OpenWestside(Toggle):
+    """
+    Rogueport Westside is open from the start.
+    """
+    display_name = "Open West Side"
+
+class PermanentPeekaboo(Toggle):
+    """
+    The Peekaboo badge is always active, even when not equipped.
+    """
+    display_name = "Permanent Peekaboo"
+
+class DisableIntermissions(Toggle):
+    """
+    After obtaining a crystal star, mario will stay in the bosses room,
+    and the sequence will be updated past the intermission.
+    """
+    display_name = "Disable Intermissions"
+
+class StartingHP(Range):
+    """
+    How much health you start with.
+    """
+    display_name = "Starting HP"
+    range_start = 1
+    range_end = 100
+    default = 10
+
+class StartingFP(Range):
+    """
+    How much flower points you start with.
+    """
+    display_name = "Starting FP"
+    range_start = 0
+    range_end = 100
+    default = 5
+
+class StartingBP(Range):
+    """
+    How many badge points you start with.
+    """
+    display_name = "Starting BP"
+    range_start = 0
+    range_end = 99
+    default = 3
+
 class StartingCoins(Range):
     """
     How many coins you start with.
@@ -65,6 +111,7 @@ class StartingPartner(Choice):
     option_flurrie = 5
     option_vivian = 6
     option_ms_mowz = 7
+    option_random_partner = 8
     default = 1
 
 class YoshiColor(Choice):
@@ -79,6 +126,7 @@ class YoshiColor(Choice):
     option_pink = 4
     option_black = 5
     option_white = 6
+    option_random_color = 7
     default = 0
 
 class YoshiName(FreeText):
@@ -99,6 +147,12 @@ class TTYDOptions(PerGameCommonOptions):
     limit_chapter_logic: LimitChapterLogic
     limit_chapter_eight: LimitChapterEight
     palace_skip: PalaceSkip
+    disable_intermissions: DisableIntermissions
+    open_westside: OpenWestside
+    permanent_peekaboo: PermanentPeekaboo
+    starting_hp: StartingHP
+    starting_fp: StartingFP
+    starting_bp: StartingBP
     starting_coins: StartingCoins
     starting_partner: StartingPartner
     yoshi_color: YoshiColor
