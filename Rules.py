@@ -262,7 +262,7 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
                            and state.has("Black Key (Paper Curse)", world.player)),
         "Hooktail's Castle Prison Entrance: Attack FX R":
             lambda state: ((state.has("Yoshi", world.player) or state.has("Plane Curse", world.player))
-                           and state.has("Koops", world.player) and state.has("Castle Key", world.player, 1)),
+                           and state.has("Koops", world.player) and state.has("Castle Key", world.player, 1) and state.has("Paper Curse", world.player)),
         "Hooktail's Castle Spikes Room: Black Key (Paper Curse)":
             lambda state: ((state.has("Yoshi", world.player) or state.has("Plane Curse", world.player))
                            and state.has("Koops", world.player) and state.has("Castle Key", world.player, 1)
