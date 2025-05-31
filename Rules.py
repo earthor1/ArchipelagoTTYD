@@ -41,8 +41,6 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
             lambda state: state.has("Emerald Star", world.player),
         "Great Tree Red Key Room: Mushroom":
             lambda state: state.has("Emerald Star", world.player),
-        "Keelhaul Key Grotto Entrance: Wedding Ring":
-            lambda state: state.has("Sapphire Star", world.player),
         "Creepy Steeple Main Hall: Steeple Key":
             lambda state: state.has("Koops", world.player) or state.has("Yoshi", world.player),
         "Creepy Steeple Main Hall: Lucky Start":
