@@ -43,6 +43,8 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
             lambda state: state.has("Emerald Star", world.player),
         "Creepy Steeple Main Hall: Steeple Key":
             lambda state: state.has("Koops", world.player) or state.has("Yoshi", world.player),
+        "Keelhaul Key Grotto Entrance: Wedding Ring":
+            lambda state: state.has("Yoshi", world.player),
         "Creepy Steeple Main Hall: Lucky Start":
             lambda state: StateLogic.super_hammer(state, world.player),
         "Creepy Steeple Upper Room: Ruby Star":
