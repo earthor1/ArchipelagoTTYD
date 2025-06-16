@@ -24,6 +24,13 @@ class PitItems(Choice):
     option_all = 2
     default = 1
 
+class TattleSanityOption(Toggle):
+    """
+    Creates a location for every enemy being tattled.
+    All key items can possibly be placed in these locations.
+    """
+    display_name = "Tattlesanity"
+
 class LimitChapterLogic(Toggle):
     """
     Progression items will only appear in required chapters, and in common areas. You will not need to
@@ -62,18 +69,19 @@ class FullRunBar(Toggle):
     """
     display_name = "Full Run Bar"
 
-class FastTravel(Toggle):
-    """
-    Fast travel by pressing 'A' on a location in the journal's map.
-    """
-    display_name = "Fast Travel"
-
 class DisableIntermissions(Toggle):
     """
-    After obtaining a crystal star, mario will stay in the bosses room,
+    After obtaining a crystal star, mario will stay in the boss' room,
     and the sequence will be updated past the intermission.
     """
     display_name = "Disable Intermissions"
+
+class FastTravel(Toggle):
+    """
+    Enable this to gain the ability to warp to any area you have visited from the map
+    screen in the main menu. Press A on the destination to open the warp confirmation dialog.
+    """
+    display_name = "Fast Travel"
 
 class StartingHP(Range):
     """
@@ -155,15 +163,16 @@ class YoshiName(FreeText):
 class TTYDOptions(PerGameCommonOptions):
     start_inventory_from_pool: StartInventoryPool
     chapter_clears: ChapterClears
+    tattlesanity: TattleSanityOption
     pit_items: PitItems
     limit_chapter_logic: LimitChapterLogic
     limit_chapter_eight: LimitChapterEight
     palace_skip: PalaceSkip
     disable_intermissions: DisableIntermissions
+    fast_travel: FastTravel
     open_westside: OpenWestside
     permanent_peekaboo: PermanentPeekaboo
     full_run_bar: FullRunBar
-    fast_travel: FastTravel
     starting_hp: StartingHP
     starting_fp: StartingFP
     starting_bp: StartingBP

@@ -85,7 +85,7 @@ def moon(state, player):
 def ttyd(state, player):
     return (state.has("Plane Curse", player) or super_hammer(state, player)
             or (state.has("Flurrie", player) and (state.has("Bobbery", player) or tube_curse(state, player)
-                or (state.has("Contact Lens", player) and state.has("Paper Curse", player)))))
+            or (state.has("Contact Lens", player) and state.has("Paper Curse", player)))))
 
 
 def pit(state, player):
