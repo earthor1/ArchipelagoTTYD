@@ -83,6 +83,13 @@ class FastTravel(Toggle):
     """
     display_name = "Fast Travel"
 
+class AlwaysSucceedConditions(Toggle):
+    """
+    Enable this to make it so the battle condition in fights in the Glitz Pit
+    will always be fulfilled, regardless of their actual fulfillment.
+    """
+    display_name = "Always Succeed Conditions"
+
 class StartingHP(Range):
     """
     How much health you start with.
@@ -139,15 +146,15 @@ class YoshiColor(Choice):
     Select the color of your Yoshi partner.
     """
     display_name = "Yoshi Color"
-    option_green = 0
-    option_red = 1
-    option_blue = 2
-    option_orange = 3
-    option_pink = 4
-    option_black = 5
-    option_white = 6
-    option_random_color = 7
-    default = 0
+    option_green = 1
+    option_red = 2
+    option_blue = 3
+    option_orange = 4
+    option_pink = 5
+    option_black = 6
+    option_white = 7
+    option_random_color = 8
+    default = 1
 
 class YoshiName(FreeText):
     """
@@ -170,6 +177,7 @@ class TTYDOptions(PerGameCommonOptions):
     palace_skip: PalaceSkip
     disable_intermissions: DisableIntermissions
     fast_travel: FastTravel
+    succeed_conditions: AlwaysSucceedConditions
     open_westside: OpenWestside
     permanent_peekaboo: PermanentPeekaboo
     full_run_bar: FullRunBar

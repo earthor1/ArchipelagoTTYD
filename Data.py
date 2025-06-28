@@ -1042,7 +1042,6 @@ location_to_unit = {
     78780927: [0x2a],  # Tattle: Hyper Bald Cleft -> unit_hyper_sinnosuke
     78780928: [0x1a],  # Tattle: Cleft -> unit_monochrome_sinemon
     78780929: [0x3D, 0x3E],  # Tattle: Iron Cleft (Red) -> unit_iron_sinemon
-    78780930: [0x3D, 0x3E],  # Tattle: Iron Cleft (Green) -> unit_iron_sinemon2
     78780931: [0x47],  # Tattle: Hyper Cleft -> unit_hyper_sinemon
     78780932: [0x72],  # Tattle: Moon Cleft -> unit_sinemon
     78780933: [0x13],  # Tattle: Bristle -> unit_togedaruma
@@ -1065,7 +1064,7 @@ location_to_unit = {
     78780950: [0xab],  # Tattle: Bonetail -> unit_boss_zonbaba
     78780951: [0x40],  # Tattle: Rawk Hawk -> unit_boss_champion
     78780952: [0x41],  # Tattle: Macho Grubba -> unit_boss_macho_gance
-    78780953: [0x4d],  # Tattle: Doopliss -> unit_boss_rampell
+    78780953: [0x4D, 0x4E, 0x4F],  # Tattle: Doopliss -> unit_boss_rampell
     78780954: [0x5D, 0x5E, 0x5F, 0x60, 0x61, 0x62],  # Tattle: Cortez -> unit_boss_cortez
     78780955: [0x6b, 0x6E, 0x6D, 0x6C, 0x6F],  # Tattle: Smorg -> unit_boss_moamoa
     78780956: [0x1c, 0x64, 0x65, 0x66],  # Tattle: X-Naut -> unit_gundan_zako
@@ -1241,4 +1240,35 @@ chapter_items = {
     6: ["Elevator Key", "Ragged Diary", "Blanket", "Autograph", "Shell Earrings", "Gold Ring", "Briefcase", "Galley Pot", "Vital Paper", "Station Key 1", "Station Key 2"],
     7: ["Goldbob Guide", "Elevator Key 1", "Elevator Key 2", "Cog", "Card Key 1", "Card Key 2", "Card Key 3", "Card Key 4"],
     8: ["Palace Key", "Palace Key (Riddle Tower)", "Star Key"],
+}
+
+pit_exclusive_tattle_stars_required = {
+    1: [
+        "Tattle: Gloomba",
+        "Tattle: Paragloomba"
+    ],
+    2: [
+        "Tattle: Spiky Gloomba",
+        "Tattle: Dark Koopa"
+    ],
+    3: [
+        "Tattle: Dark Paratroopa",
+        "Tattle: Badge Bandit",
+        "Tattle: Dark Boo"
+    ],
+    4: [
+        "Tattle: Dark Lakitu",
+        "Tattle: Sky-Blue Spiny",
+        "Tattle: Wizzerd"
+    ],
+    5: [
+        "Tattle: Piranha Plant",
+        "Tattle: Dark Bristle",
+        "Tattle: Arantula",
+        "Tattle: Elite Wizzerd",
+        "Tattle: Swampire",
+        "Tattle: Poison Puff",
+        "Tattle: Bob-ulk",
+        "Tattle: Bonetail"
+    ]
 }
