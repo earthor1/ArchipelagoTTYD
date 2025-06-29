@@ -800,8 +800,8 @@ item_prices = {
     77772049: 1,  # Dried Shroom
     77772051: 10,  # Earth Quake
     77772052: 30,  # Elevator Key
-    77772053: 30,  # Elevator Key 1
-    77772054: 30,  # Elevator Key 2
+    77772053: 30,  # Elevator Key (X-Naut Fortress) 1
+    77772054: 30,  # Elevator Key (X-Naut Fortress) 2
     77772055: 30,  # Emerald Star
     77772056: 20,  # Feeling Fine
     77772057: 20,  # Feeling Fine P
@@ -1234,10 +1234,10 @@ chapter_items = {
     1: ["Castle Key", "Sun Stone", "Moon Stone", "Black Key (Paper Curse)"],
     2: ["Puni Orb", "Necklace", "Red Key", "Blue Key"],
     3: ["Storage Key 1", "Storage Key 2"],
-    4: ["Shop Key", "Black Key (Tube Curse)", "Steeple Key", "The Letter \"P\"", "Superbombomb"],
+    4: ["Shop Key", "Black Key (Tube Curse)", "Steeple Key", "The Letter \"p\"", "Superbombomb"],
     5: ["Chuckola Cola", "Skull Gem", "Gate Handle", "Grotto Key", "Wedding Ring", "Coconut", "Black Key (Boat Curse)"],
     6: ["Elevator Key", "Ragged Diary", "Blanket", "Autograph", "Shell Earrings", "Gold Ring", "Briefcase", "Galley Pot", "Vital Paper", "Station Key 1", "Station Key 2"],
-    7: ["Goldbob Guide", "Elevator Key 1", "Elevator Key 2", "Cog", "Card Key 1", "Card Key 2", "Card Key 3", "Card Key 4"],
+    7: ["Goldbob Guide", "Elevator Key (X-Naut Fortress) 1", "Elevator Key (X-Naut Fortress) 2", "Cog", "Card Key 1", "Card Key 2", "Card Key 3", "Card Key 4"],
     8: ["Palace Key", "Palace Key (Riddle Tower)", "Star Key"],
 }
 
