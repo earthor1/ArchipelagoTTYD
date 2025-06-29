@@ -527,7 +527,7 @@ riverside: typing.List[LocationData] = [
     LocationData("Riverside Station Back Exterior: Thunder Rage", 78780542, Rels.eki, [0xDD20]),
     LocationData("Riverside Station Tube Mode Maze: Dried Shroom", 78780543, Rels.eki, [0xE628]),
     LocationData("Riverside Station Tube Mode Maze: P-Up D-Down", 78780544, Rels.eki, [0xE650]),
-    LocationData("Riverside Station Ultra Boots Room: Elevator Key", 78780545, Rels.eki, [0xEB7C, 0xEA28]),
+    LocationData("Riverside Station Ultra Boots Room: Elevator Key (Riverside)", 78780545, Rels.eki, [0xEB7C, 0xEA28]),
     LocationData("Riverside Station Ultra Boots Room: Ultra Boots", 78780546, Rels.eki, [0xE990]),
     LocationData("Riverside Station Goomba Room: Shine Sprite", 78780547, Rels.eki, [0xF5D4])
 ]
@@ -576,7 +576,7 @@ xnaut_fortress: typing.List[LocationData] = [
     LocationData("Moon Fortress View: Star Piece", 78780581, Rels.moo, [0x5B14]),
     LocationData("Moon West Room 2: Ruin Powder", 78780582, Rels.moo, [0x979C]),
     LocationData("Moon West Room 1: Courage Shell", 78780583, Rels.moo, [0x99F0]),
-    LocationData("X-Naut Fortress Elevator Key Room: Elevator Key (X-Naut Fortress) 1", 78780584, Rels.aji, [0x1EC14]),
+    LocationData("X-Naut Fortress Elevator Key Room: Elevator Key 1", 78780584, Rels.aji, [0x1EC14]),
     LocationData("X-Naut Fortress Elevator Key Room: Super Shroom", 78780585, Rels.aji, [0x1F180]),
     LocationData("X-Naut Fortress Crane Room: Coin 1", 78780586, Rels.aji, [0x21DBC]),
     LocationData("X-Naut Fortress Crane Room: Coin 2", 78780587, Rels.aji, [0x21DE4]),
@@ -587,7 +587,7 @@ xnaut_fortress: typing.List[LocationData] = [
     LocationData("X-Naut Fortress Crane Room: Feeling Fine", 78780592, Rels.aji, [0x21E68]),
     LocationData("X-Naut Fortress Crane Room: Feeling Fine P", 78780593, Rels.aji, [0x21EC8]),
     LocationData("X-Naut Fortress Crane Room: Star Piece", 78780594, Rels.aji, [0x21F28]),
-    LocationData("X-Naut Fortress Quiz Room: Elevator Key (X-Naut Fortress) 2", 78780595, Rels.aji, [0x23DFC, 0x23BAC]),
+    LocationData("X-Naut Fortress Quiz Room: Elevator Key 2", 78780595, Rels.aji, [0x23DFC, 0x23BAC]),
     LocationData("X-Naut Fortress Card Key Room A: Card Key 1", 78780596, Rels.aji, [0x23FD8]),
     LocationData("X-Naut Fortress Card Key Room A: Sleepy Sheep", 78780597, Rels.aji, [0x24338]),
     LocationData("X-Naut Fortress Teleporter Room: Cog", 78780598, Rels.aji, [0x299D0]),

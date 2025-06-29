@@ -528,7 +528,7 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
                            and StateLogic.tube_curse(state, world.player)
                            and (StateLogic.ultra_boots(state, world.player) or state.has("Koops", world.player))
                            and state.has("Flurrie", world.player)),
-        "Riverside Station Ultra Boots Room: Elevator Key":
+        "Riverside Station Ultra Boots Room: Elevator Key (Riverside)":
             lambda state: (state.has("Station Key 1", world.player) and state.has("Station Key 2", world.player)
                            and StateLogic.tube_curse(state, world.player) and StateLogic.ultra_boots(state, world.player)
                            and state.has("Flurrie", world.player) and state.has("Yoshi", world.player)),
@@ -541,15 +541,15 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
             lambda state: state.has("Station Key 1", world.player) and StateLogic.ultra_boots(state, world.player),
         "Poshley Heights Sanctum Altar: Garnet Star":
             lambda state: (StateLogic.riverside(state, world.player) and state.has("Station Key 1", world.player)
-                           and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key", world.player)
+                           and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key (Riverside)", world.player)
                            and state.has("Plane Curse", world.player) and StateLogic.super_hammer(state, world.player)),
         "Poshley Heights Sanctum Altar: L Emblem":
             lambda state: (StateLogic.riverside(state, world.player) and state.has("Station Key 1", world.player)
-                           and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key", world.player)
+                           and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key (Riverside)", world.player)
                            and state.has("Plane Curse", world.player) and StateLogic.super_hammer(state, world.player)),
         "Poshley Heights Sanctum Altar: Shine Sprite":
             lambda state: (StateLogic.riverside(state, world.player) and state.has("Station Key 1", world.player)
-                           and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key", world.player)
+                           and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key (Riverside)", world.player)
                            and state.has("Plane Curse", world.player) and StateLogic.super_hammer(state, world.player)),
         "Rogueport Sewers Boggly Woods Pipe: Star Piece":
             lambda state: StateLogic.super_boots(state, world.player) and (state.has("Paper Curse", world.player) or StateLogic.super_hammer(state, world.player)),
@@ -630,52 +630,52 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
         "Twilight Trail Steeple Exterior: Star Piece":
             lambda state: state.has("Flurrie", world.player) and StateLogic.super_boots(state, world.player),
         "X-Naut Fortress Crane Room: Coin 1":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player) and state.has("Cog", world.player),
+            lambda state: state.has("Elevator Key 1", world.player) and state.has("Cog", world.player),
         "X-Naut Fortress Crane Room: Coin 2":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player) and state.has("Cog", world.player),
+            lambda state: state.has("Elevator Key 1", world.player) and state.has("Cog", world.player),
         "X-Naut Fortress Crane Room: Coin 3":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player) and state.has("Cog", world.player),
+            lambda state: state.has("Elevator Key 1", world.player) and state.has("Cog", world.player),
         "X-Naut Fortress Crane Room: Coin 4":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player) and state.has("Cog", world.player),
+            lambda state: state.has("Elevator Key 1", world.player) and state.has("Cog", world.player),
         "X-Naut Fortress Crane Room: Coin 5":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player) and state.has("Cog", world.player),
+            lambda state: state.has("Elevator Key 1", world.player) and state.has("Cog", world.player),
         "X-Naut Fortress Crane Room: Coin 6":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player) and state.has("Cog", world.player),
+            lambda state: state.has("Elevator Key 1", world.player) and state.has("Cog", world.player),
         "X-Naut Fortress Crane Room: Feeling Fine":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player) and state.has("Cog", world.player),
+            lambda state: state.has("Elevator Key 1", world.player) and state.has("Cog", world.player),
         "X-Naut Fortress Crane Room: Feeling Fine P":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player) and state.has("Cog", world.player),
+            lambda state: state.has("Elevator Key 1", world.player) and state.has("Cog", world.player),
         "X-Naut Fortress Crane Room: Star Piece":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player) and state.has("Cog", world.player),
+            lambda state: state.has("Elevator Key 1", world.player) and state.has("Cog", world.player),
         "X-Naut Fortress Ceiling Grate Room: Star Piece":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player) and StateLogic.ultra_boots(state, world.player),
+            lambda state: state.has("Elevator Key 1", world.player) and StateLogic.ultra_boots(state, world.player),
         "X-Naut Fortress Teleporter Room: Cog":
-            lambda state: (state.has("Elevator Key (X-Naut Fortress) 1", world.player) and StateLogic.ultra_boots(state, world.player)
+            lambda state: (state.has("Elevator Key 1", world.player) and StateLogic.ultra_boots(state, world.player)
                            and state.has("Paper Curse", world.player)),
-        "X-Naut Fortress Quiz Room: Elevator Key (X-Naut Fortress) 2":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player),
+        "X-Naut Fortress Quiz Room: Elevator Key 2":
+            lambda state: state.has("Elevator Key 1", world.player),
         "X-Naut Fortress Card Key Room A: Card Key 1":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player),
+            lambda state: state.has("Elevator Key 1", world.player),
         "X-Naut Fortress Card Key Room A: Sleepy Sheep":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player),
+            lambda state: state.has("Elevator Key 1", world.player),
         "X-Naut Fortress Office: Card Key 2":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player),
+            lambda state: state.has("Elevator Key 1", world.player),
         "X-Naut Fortress Card Key Room B: Card Key 3":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player) and state.has("Elevator Key (X-Naut Fortress) 2", world.player),
+            lambda state: state.has("Elevator Key 1", world.player) and state.has("Elevator Key 2", world.player),
         "X-Naut Fortress Card Key Room B: HP Drain":
-            lambda state: state.has("Elevator Key (X-Naut Fortress) 1", world.player) and state.has("Elevator Key (X-Naut Fortress) 2", world.player),
+            lambda state: state.has("Elevator Key 1", world.player) and state.has("Elevator Key 2", world.player),
         "X-Naut Fortress Factory: Ultra Shroom":
-            lambda state: (state.has("Elevator Key (X-Naut Fortress) 1", world.player) and state.has("Elevator Key (X-Naut Fortress) 2", world.player)
+            lambda state: (state.has("Elevator Key 1", world.player) and state.has("Elevator Key 2", world.player)
                            and state.has("Card Key 1", world.player) and state.has("Card Key 2", world.player)
                            and state.has("Card Key 3", world.player) and state.has("Paper Curse", world.player)
                            and state.has("Vivian", world.player)),
         "X-Naut Fortress Factory: Card Key 4":
-            lambda state: (state.has("Elevator Key (X-Naut Fortress) 1", world.player) and state.has("Elevator Key (X-Naut Fortress) 2", world.player)
+            lambda state: (state.has("Elevator Key 1", world.player) and state.has("Elevator Key 2", world.player)
                            and state.has("Card Key 1", world.player) and state.has("Card Key 2", world.player)
                            and state.has("Card Key 3", world.player) and state.has("Paper Curse", world.player)
                            and state.has("Vivian", world.player) and state.has("Plane Curse", world.player)),
         "X-Naut Fortress Boss Room: Crystal Star":
-            lambda state: (state.has("Elevator Key (X-Naut Fortress) 1", world.player) and state.has("Elevator Key (X-Naut Fortress) 2", world.player)
+            lambda state: (state.has("Elevator Key 1", world.player) and state.has("Elevator Key 2", world.player)
                            and state.has("Card Key 1", world.player) and state.has("Card Key 2", world.player)
                            and state.has("Card Key 3", world.player) and state.has("Card Key 4", world.player)
                            and state.has("Paper Curse", world.player) and state.has("Vivian", world.player)
