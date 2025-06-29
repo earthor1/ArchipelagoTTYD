@@ -938,7 +938,7 @@ item_prices = {
     77772191: 15,  # Super Shroom
     77772192: 30,  # Superbombomb
     77772193: 3,  # Tasty Tonic
-    77772194: 30,  # The Letter "P"
+    77772194: 30,  # The Letter "p"
     77772195: 12,  # Thunder Bolt
     77772196: 20,  # Thunder Rage
     77772197: 20,  # Timing Tutor
