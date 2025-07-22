@@ -542,15 +542,15 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
         "Poshley Heights Sanctum Altar: Garnet Star":
             lambda state: (StateLogic.riverside(state, world.player) and state.has("Station Key 1", world.player)
                            and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key", world.player)
-                           and state.has("Plane Curse", world.player) and state.has("Train Ticket", world.player) and StateLogic.super_hammer(state, world.player)),
+                           and state.has("Plane Curse", world.player) and StateLogic.super_hammer(state, world.player)),
         "Poshley Heights Sanctum Altar: L Emblem":
             lambda state: (StateLogic.riverside(state, world.player) and state.has("Station Key 1", world.player)
                            and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key", world.player)
-                           and state.has("Plane Curse", world.player) and state.has("Train Ticket", world.player) and StateLogic.super_hammer(state, world.player)),
+                           and state.has("Plane Curse", world.player) and StateLogic.super_hammer(state, world.player)),
         "Poshley Heights Sanctum Altar: Shine Sprite":
             lambda state: (StateLogic.riverside(state, world.player) and state.has("Station Key 1", world.player)
                            and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key", world.player)
-                           and state.has("Plane Curse", world.player) and state.has("Train Ticket", world.player) and StateLogic.super_hammer(state, world.player)),
+                           and state.has("Plane Curse", world.player) and StateLogic.super_hammer(state, world.player)),
         "Rogueport Sewers Boggly Woods Pipe: Star Piece":
             lambda state: StateLogic.super_boots(state, world.player) and (state.has("Paper Curse", world.player) or StateLogic.super_hammer(state, world.player)),
         "Rogueport Sewers Boggly Woods Pipe: Damage Dodge":
