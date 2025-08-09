@@ -678,8 +678,7 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
             lambda state: (state.has("Elevator Key 1", world.player) and state.has("Elevator Key 2", world.player)
                            and state.has("Card Key 1", world.player) and state.has("Card Key 2", world.player)
                            and state.has("Card Key 3", world.player) and state.has("Card Key 4", world.player)
-                           and state.has("Paper Curse", world.player) and state.has("Vivian", world.player)
-                           and state.has("Plane Curse", world.player)),
+                           and state.has("Paper Curse", world.player) and state.has("Vivian", world.player)),
         "Rogueport Sewers Black Chest Room: Plane Curse":
             lambda state: state.has("Black Key (Plane Curse)", world.player),
         "Rogueport Docks: HP Drain":
