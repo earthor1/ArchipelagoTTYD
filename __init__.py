@@ -272,7 +272,8 @@ class TTYDWorld(World):
             "palace_skip": self.options.palace_skip.value,
             "yoshi_color": self.options.yoshi_color.value,
             "westside": self.options.open_westside.value,
-            "tattlesanity": self.options.tattlesanity.value
+            "tattlesanity": self.options.tattlesanity.value,
+            "disable_intermissions": self.options.disable_intermissions.value,
         }
 
     def create_item(self, name: str) -> TTYDItem:

@@ -125,7 +125,7 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
             lambda state: StateLogic.super_boots(state, world.player),
         "Fahr Outpost Entrance: Star Piece":
             lambda state: StateLogic.super_boots(state, world.player),
-        "Fahr Outpost Town: Star Piece 2":
+        "Fahr Outpost Town: Star Piece 1":
             lambda state: StateLogic.super_boots(state, world.player),
         "Glitzville Lobby: Storage Key 2":
             lambda state: state.has("Flurrie", world.player),
@@ -678,8 +678,7 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
             lambda state: (state.has("Elevator Key 1", world.player) and state.has("Elevator Key 2", world.player)
                            and state.has("Card Key 1", world.player) and state.has("Card Key 2", world.player)
                            and state.has("Card Key 3", world.player) and state.has("Card Key 4", world.player)
-                           and state.has("Paper Curse", world.player) and state.has("Vivian", world.player)
-                           and state.has("Plane Curse", world.player)),
+                           and state.has("Paper Curse", world.player) and state.has("Vivian", world.player)),
         "Rogueport Sewers Black Chest Room: Plane Curse":
             lambda state: state.has("Black Key (Plane Curse)", world.player),
         "Rogueport Docks: HP Drain":
@@ -782,7 +781,7 @@ def get_tattle_rules_dict() -> dict[str, typing.List[int]]:
         "Tattle: Vivian": [78780215],
         "Tattle: Marilyn": [78780215],
         "Tattle: Beldam": [78780215],
-        "Tattle: X-Naut": [78780300],
+        "Tattle: X-Naut": [78780231],
         "Tattle: Yux": [78780231],
         "Tattle: Mini-Yux": [78780231],
         "Tattle: Pider": [78780241, 78780267, 78780639],
