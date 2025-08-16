@@ -70,9 +70,9 @@ def get_region_connections_dict(world: "TTYDWorld") -> dict[tuple[str, str], typ
         ("Rogueport Sewers", "Pit of 100 Trials"):
             lambda state: StateLogic.pit(state, world.player),
         ("Rogueport", "Shadow Queen"):
-            lambda state: StateLogic.palace(state, world.player, world.options.chapter_clears.value),
+            lambda state: StateLogic.palace(state, world.player, world.options.palace_stars.value),
         ("Rogueport", "Palace of Shadow"):
-            lambda state: StateLogic.palace(state, world.player, world.options.chapter_clears.value),
+            lambda state: StateLogic.palace(state, world.player, world.options.palace_stars.value),
         ("Palace of Shadow", "Palace of Shadow (Post-Riddle Tower)"):
             lambda state: StateLogic.riddle_tower(state, world.player),
         ("Palace of Shadow (Post-Riddle Tower)", "Shadow Queen"):
@@ -154,6 +154,13 @@ def connect_regions(world: "TTYDWorld"):
             # Skip connections where the region doesn't exist
             # This could happen if one region was excluded by a different mechanism
             continue
+
+
+def register_indirect_connections(world: "TTYDWorld"):
+    world.multiworld.register_indirect_condition(world.get_region("Rogueport Sewers Westside Ground"),
+                                                 world.get_entrance("Fahr Outpost"))
+    world.multiworld.register_indirect_condition(world.get_region("Rogueport Sewers Westside"),
+                                                 world.get_entrance("Fahr Outpost"))
 
 
 def create_region(world: "TTYDWorld", name: str, locations: list[LocationData]):

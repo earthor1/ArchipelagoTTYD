@@ -67,11 +67,11 @@ def excess_express(state, player):
 
 
 def riverside(state, player):
-    return state.has("Vivian", player) and state.has("Autograph", player) and state.has("Ragged Diary", player) and state.has("Blanket", player) and state.has("Vital Paper", player)
+    return state.has("Vivian", player) and state.has("Autograph", player) and state.has("Ragged Diary", player) and state.has("Blanket", player) and state.has("Vital Paper", player) and state.has("Train Ticket", player)
 
 
 def poshley_heights(state, player):
-    return state.has("Station Key 1", player) and state.has("Elevator Key", player) and super_hammer(state, player) and ultra_boots(state, player)
+    return state.has("Station Key 1", player) and state.has("Elevator Key (Riverside)", player) and super_hammer(state, player) and ultra_boots(state, player)
 
 
 def fahr_outpost(state, player):
