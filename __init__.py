@@ -209,7 +209,7 @@ class TTYDWorld(World):
             if itemName in ["Star Key", "Palace Key", "Palace Key (Riddle Tower)"] and self.options.palace_skip:
                 continue
             item = self.create_item(itemName)
-            self.limited_state.collect(item)
+            self.limited_state.collect(item, prevent_sweep=True)
             if itemName in self.limited_item_names:
                 if itemName not in ["Star Key", "Palace Key", "Palace Key (Riddle Tower)"]:
                     self.limited_items.append(item)
