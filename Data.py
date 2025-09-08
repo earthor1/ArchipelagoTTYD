@@ -917,6 +917,7 @@ item_prices = {
     77772167: 30,  # Simplifier - 30 buy price
     77772168: 30,  # Skull Gem
     77772169: 8,  # Sleepy Sheep
+    77772219: 50,  # Sleepy Sheep
     77772170: 10,  # Slow Go - 10 buy price
     77772171: 15,  # Slow Shroom
     77772172: 40,  # Soft Stomp - 40 buy price
