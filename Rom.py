@@ -9,11 +9,10 @@ from worlds.Files import APProcedurePatch, APTokenMixin, APPatchExtension, AutoP
 from .Items import items_by_id, ItemData, item_type_dict
 from .Locations import locationName_to_data, location_table
 from .Data import Rels, shop_items, item_prices, rel_filepaths, location_to_unit
-from .StateLogic import westside
 from .TTYDPatcher import TTYDPatcher
 
 if TYPE_CHECKING:
-    from . import TTYDWorld, location_id_to_name
+    from . import TTYDWorld
 
 
 class TTYDPatchExtension(APPatchExtension):
@@ -53,7 +52,7 @@ class TTYDPatchExtension(APPatchExtension):
         caller.patcher.dol.data.seek(0x223)
         caller.patcher.dol.data.write((1).to_bytes(1, "big"))
         caller.patcher.dol.data.seek(0x224)
-        caller.patcher.dol.data.write((0x80003240).to_bytes(4, "big"))
+        caller.patcher.dol.data.write((0x80003260).to_bytes(4, "big"))
         if palace_skip is not None:
             caller.patcher.dol.data.seek(0x229)
             caller.patcher.dol.data.write(palace_skip.to_bytes(1, "big"))
@@ -98,7 +97,7 @@ class TTYDPatchExtension(APPatchExtension):
         caller.patcher.dol.data.write(experience_multiplier.to_bytes(1, "big"))
         caller.patcher.dol.data.seek(0x23E)
         caller.patcher.dol.data.write(starting_level.to_bytes(1, "big"))
-        caller.patcher.dol.data.seek(0x240)
+        caller.patcher.dol.data.seek(0x260)
         caller.patcher.dol.data.write(seed_options["yoshi_name"].encode("utf-8")[0:8] + b"\x00")
         caller.patcher.dol.data.seek(0xEB6B6)
         caller.patcher.dol.data.write(int.to_bytes(seed_options["starting_coins"], 2, "big"))

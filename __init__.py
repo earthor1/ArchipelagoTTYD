@@ -1,7 +1,7 @@
 import logging
 import os
 
-from Fill import fast_fill, fill_restrictive
+from Fill import fill_restrictive
 from typing import List, Dict, ClassVar, Any
 from settings import UserFilePath, Group
 from BaseClasses import Tutorial, ItemClassification, CollectionState, Item
@@ -212,9 +212,6 @@ class TTYDWorld(World):
         self.limited_state = CollectionState(self.multiworld)
         required_items = []
         precollected = [item for item in itemList if item in self.multiworld.precollected_items[self.player]]
-        for item in self.multiworld.precollected_items[self.player]:
-            self.limited_state.collect(item, prevent_sweep=True)
-        self.limited_state.collect(self.create_item(starting_partners[self.options.starting_partner.value - 1]), prevent_sweep=True)
         added_items = 0
         for chapter in self.limited_chapters:
             self.limited_item_names.update(chapter_items[chapter])
@@ -226,19 +223,20 @@ class TTYDWorld(World):
             if itemName in ["Star Key", "Palace Key", "Palace Key (Riddle Tower)"] and self.options.palace_skip:
                 continue
             item = self.create_item(itemName)
-            self.limited_state.collect(item)
             if itemName in self.limited_item_names:
                 if itemName not in ["Star Key", "Palace Key", "Palace Key (Riddle Tower)"]:
                     self.limited_items.append(item)
                     added_items += 1
             else:
+                self.limited_state.collect(item, prevent_sweep=True)
                 self.multiworld.itempool.append(item)
                 added_items += 1
 
         useful_items = []
         for item in [item for item in itemList if item.progression == ItemClassification.useful]:
-            freq = item_frequencies.get(item.itemName, 1)
-            useful_items += [item.itemName for _ in range(freq)]
+            if item.itemName != starting_partners[self.options.starting_partner.value - 1]:
+                freq = item_frequencies.get(item.itemName, 1)
+                useful_items += [item.itemName for _ in range(freq)]
         for itemName in useful_items:
             self.items.append(self.create_item(itemName))
             added_items += 1
@@ -271,6 +269,8 @@ class TTYDWorld(World):
             self.multiworld.itempool.append(item)
 
     def pre_fill(self) -> None:
+        _ = [self.limited_state.collect(location.item, prevent_sweep=True) for location in self.get_locations() if
+             location.item is not None and location.item.name not in stars]
         self.multiworld.random.shuffle(self.limited_items)
         self.multiworld.random.shuffle(list(self.limited_chapter_locations))
         fill_restrictive(self.multiworld, self.limited_state, list(self.limited_chapter_locations), self.limited_items, single_player_placement=True, swap=True)
@@ -299,6 +299,7 @@ class TTYDWorld(World):
             "tattlesanity": self.options.tattlesanity.value,
             "disable_intermissions": self.options.disable_intermissions.value,
             "cutscene_skip": self.options.cutscene_skip.value,
+            "death_link": self.options.death_link.value,
         }
 
     def create_item(self, name: str) -> TTYDItem:
