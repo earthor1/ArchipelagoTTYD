@@ -98,7 +98,7 @@ itemList: typing.List[ItemData] = [
     ItemData(77772075, "Gold Star", ItemClassification.progression),
     ItemData(77772076, "Goldbob Guide", ItemClassification.progression),
     ItemData(77772077, "Golden Leaf", ItemClassification.filler),
-    ItemData(77772078, "Goombella", ItemClassification.useful),
+    ItemData(77772078, "Goombella", ItemClassification.progression),
     ItemData(77772079, "Gradual Syrup", ItemClassification.filler),
     ItemData(77772080, "Grotto Key", ItemClassification.progression),
     ItemData(77772081, "Hammer Throw", ItemClassification.useful),
