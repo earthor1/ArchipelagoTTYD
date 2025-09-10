@@ -304,11 +304,12 @@ class TTYDWorld(World):
 
     def create_item(self, name: str) -> TTYDItem:
         item = item_table.get(name, ItemData(None, name, ItemClassification.progression))
+        progression = item.progression
 
         if item.itemName == "Goombella" and self.options.tattlesanity:
-            item.progression = ItemClassification.progression
+            progression = ItemClassification.progression
 
-        return TTYDItem(item.itemName, item.progression, item.code, self.player)
+        return TTYDItem(item.itemName, progression, item.code, self.player)
 
     def lock_item(self, location: str, item_name: str):
         item = self.create_item(item_name)
