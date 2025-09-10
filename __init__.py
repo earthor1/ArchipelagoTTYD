@@ -15,6 +15,7 @@ from .Items import TTYDItem, itemList, item_frequencies, item_table, ItemData
 from .Regions import create_regions, connect_regions, get_regions_dict, register_indirect_connections
 from .Rom import TTYDProcedurePatch, write_files
 from .Rules import set_rules, get_tattle_rules_dict, set_tattle_rules
+from .tracker import TRACKER_WORLD
 from worlds.LauncherComponents import Component, SuffixIdentifier, Type, components, launch_subprocess
 
 
@@ -88,6 +89,9 @@ class TTYDWorld(World):
     limited_item_names: set
     limited_items: List[TTYDItem]
     limited_state: CollectionState = None
+
+    # Integrating Universal Tracker directly into TTYD APWorld
+    tracker_world: ClassVar = tracker.TRACKER_WORLD
 
     def generate_early(self) -> None:
         self.disabled_locations = set()
@@ -300,6 +304,9 @@ class TTYDWorld(World):
             "disable_intermissions": self.options.disable_intermissions.value,
             "cutscene_skip": self.options.cutscene_skip.value,
             "death_link": self.options.death_link.value,
+            #           options called out below for YAML-less generation with UT
+            #            "options": self.options.as_dict("goal", "goal_stars", "palace_stars", "tattlesanity", "pit_items", "limit_chapter_logic", "limit_chapter_eight", "palace_skip", "disable_intermissions", "open_westside", "starting_partner"),
+
         }
 
     def create_item(self, name: str) -> TTYDItem:

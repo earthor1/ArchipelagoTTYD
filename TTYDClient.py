@@ -28,6 +28,15 @@ SHOP_POINTER = 0x8041EB60
 SHOP_ITEM_OFFSET = 0x2F
 SHOP_ITEM_PURCHASED = 0xD7
 
+tracker_loaded = False
+try:
+    from worlds.tracker.TrackerClient import TrackerGameContext as SuperContext
+    tracker_loaded = True
+except ModuleNotFoundError:
+    from CommonClient import CommonContext as SuperContext
+
+
+
 def read_string(address: int, length: int):
     try:
         return dolphin.read_bytes(address, length).decode().strip("\0")
@@ -149,6 +158,9 @@ class TTYDContext(CommonContext):
 
         self.ui = TTYDManager(self)
         self.ui_task = asyncio.create_task(self.ui.async_run(), name="UI")
+        ui = super().make_gui()
+        ui.base_title = TTYDManager.base_title
+        return ui
 
     async def receive_items(self):
         current_length = dolphin.read_word(RECEIVED_LENGTH)
