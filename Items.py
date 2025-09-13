@@ -239,7 +239,7 @@ itemList: typing.List[ItemData] = [
 ]
 
 item_frequencies: typing.Dict[str, int] = {
-    "10 Coins": 36,
+    "10 Coins": 50,
     "Boo's Sheet": 4,
     "Castle Key": 4,
     "Close Call": 2,
@@ -318,7 +318,8 @@ item_frequencies: typing.Dict[str, int] = {
     "Thunder Bolt": 2,
     "Thunder Rage": 7,
     "Tornado Jump": 2,
-    "Ultra Shroom": 9,
+    "Turtley Leaf": 2,
+    "Ultra Shroom": 10,
     "Unsimplifier": 2,
     "Volt Shroom": 3,
     "Whacka Bump": 8,
