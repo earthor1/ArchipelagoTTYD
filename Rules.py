@@ -614,7 +614,7 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
             lambda state: state.has("Shop Key", world.player),
         "Twilight Town Rightside: Spite Pouch":
             lambda state: state.has("Shop Key", world.player),
-        "Twilight Town Rightside: Stop Watch":
+        "Twilight Town Rightside: Stopwatch":
             lambda state: state.has("Shop Key", world.player),
         "Twilight Town Rightside: Super Shroom":
             lambda state: state.has("Shop Key", world.player),

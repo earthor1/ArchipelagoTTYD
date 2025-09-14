@@ -73,7 +73,7 @@ rogueport: typing.List[LocationData] = [
     LocationData("Rogueport Center: Star Piece 3", 78780047, Rels.gor, [0x3C58C]),
     LocationData("Rogueport Center: Star Piece 4", 78780048, Rels.gor, [0x3C5B4]),
     LocationData("Rogueport Center: Star Piece 5", 78780049, Rels.gor, [0x3C5DC]),
-    #LocationData("Rogueport Center: Stop Watch", 78780050, Rels.gor),
+    #LocationData("Rogueport Center: Stopwatch", 78780050, Rels.gor),
     #LocationData("Rogueport Center: Super Appeal", 78780051, Rels.gor),
     #LocationData("Rogueport Center: Super Appeal P", 78780052, Rels.gor),
     LocationData("Rogueport Center: Tasty Tonic", 78780053, Rels.gor, [0x36C6C, 0x36C9C]),
@@ -377,7 +377,7 @@ twilight_town_region: typing.List[LocationData] = [
     LocationData("Twilight Town Rightside: Maple Syrup", 78780312, Rels.usu, [0x15C00]),
     LocationData("Twilight Town Rightside: Spite Pouch", 78780313, Rels.usu, [0x15BF0]),
     LocationData("Twilight Town Rightside: Star Piece", 78780314, Rels.usu, [0x16D38]),
-    LocationData("Twilight Town Rightside: Stop Watch", 78780315, Rels.usu, [0x15BF8]),
+    LocationData("Twilight Town Rightside: Stopwatch", 78780315, Rels.usu, [0x15BF8]),
     LocationData("Twilight Town Rightside: Super Shroom", 78780316, Rels.usu, [0x15C08]),
     LocationData("Twilight Town Rightside: Thunder Rage", 78780317, Rels.usu, [0x15BE8]),
     LocationData("Twilight Town Rightside: Tube Curse", 78780318, Rels.usu, [0x162E8]),
@@ -561,7 +561,7 @@ fahr_outpost: typing.List[LocationData] = [
     LocationData("Fahr Outpost Town: Space Food", 78780570, Rels.bom, [0x11CAC]),
     LocationData("Fahr Outpost Town: Star Piece 1", 78780571, Rels.bom, [0x11F34]),
     LocationData("Fahr Outpost Town: Star Piece 2", 78780572, Rels.bom, [0x11F48]),
-    LocationData("Fahr Outpost Town: Stop Watch", 78780573, Rels.bom, [0x1118C]),
+    LocationData("Fahr Outpost Town: Stopwatch", 78780573, Rels.bom, [0x1118C]),
     LocationData("Fahr Outpost Town: Super Shroom", 78780574, Rels.bom, [0x1119C]),
     LocationData("Fahr Outpost West Enemy Room: Shine Sprite", 78780575, Rels.bom, [0x1264C]),
     LocationData("Fahr Outpost West Enemy Room: Star Piece", 78780576, Rels.bom, [0x12664]),
@@ -570,7 +570,7 @@ fahr_outpost: typing.List[LocationData] = [
 ]
 
 xnaut_fortress: typing.List[LocationData] = [
-    LocationData("Moon Landing Site: Stop Watch", 78780579, Rels.moo, [0x52B8]),
+    LocationData("Moon Landing Site: Stopwatch", 78780579, Rels.moo, [0x52B8]),
     LocationData("Moon East Room 1: Volt Shroom", 78780807, Rels.moo, [0x55AC]),
     LocationData("Moon Fortress View: Power Punch", 78780580, Rels.moo, [0x5C68]),
     LocationData("Moon Fortress View: Star Piece", 78780581, Rels.moo, [0x5B14]),
@@ -601,7 +601,7 @@ xnaut_fortress: typing.List[LocationData] = [
 ]
 
 palace: typing.List[LocationData] = [
-    LocationData("Palace of Shadow Swoopula Staircase: Stop Watch", 78780605, Rels.las, [0x1BF04]),
+    LocationData("Palace of Shadow Swoopula Staircase: Stopwatch", 78780605, Rels.las, [0x1BF04]),
     LocationData("Palace of Shadow Bullet Bill Hallway: Shooting Star", 78780606, Rels.las, [0x1C2A4]),
     LocationData("Palace of Shadow Spike Trap Room: All or Nothing", 78780607, Rels.las, [0x1C970]),
     LocationData("Palace of Shadow Fire Trap Room: Boo's Sheet", 78780608, Rels.las, [0x1D098]),

@@ -929,7 +929,7 @@ item_prices = {
     77772178: 30,  # Station Key 1
     77772179: 30,  # Station Key 2
     77772180: 30,  # Steeple Key
-    77772182: 12,  # Stop Watch
+    77772182: 12,  # Stopwatch
     77772183: 30,  # Storage Key 1
     77772184: 30,  # Storage Key 2
     77772185: 20,  # Strange Sack
