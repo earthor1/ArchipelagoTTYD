@@ -285,7 +285,7 @@ item_frequencies: typing.Dict[str, int] = {
     "Mini Mr. Mini": 2,
     "Mr. Softener": 2,
     "Multibounce": 2,
-    "Mushroom": 12,
+    "Mushroom": 11,
     "Mystery": 3,
     "Palace Key": 3,
     "Palace Key (Riddle Tower)": 8,
