@@ -446,7 +446,7 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
         "Pirate's Grotto Chest Boat: Black Key (Boat Curse)":
             lambda state: state.has("Yoshi", world.player) and state.has("Grotto Key", world.player)
                           and StateLogic.tube_curse(state, world.player),
-        "Pirate's Grotto Chest Boat: P-Down D-Up":
+        "Pirate's Grotto Chest Boat: P-Down, D-Up":
             lambda state: state.has("Yoshi", world.player) and state.has("Grotto Key", world.player)
                           and StateLogic.tube_curse(state, world.player),
         "Pirate's Grotto Barrel Room: 10 Coins":

@@ -874,8 +874,8 @@ item_prices = {
     77772123: 30,  # Necklace
     77772124: 30,  # Old Letter
     77772125: 12,  # Omelette Meal
-    77772126: 80,  # P-Down D-Up - 80 buy price
-    77772127: 50,  # P-Down D-Up P - 50 buy price
+    77772126: 80,  # P-Down, D-Up - 80 buy price
+    77772127: 50,  # P-Down, D-Up P - 50 buy price
     77772128: 50,  # P-Up, D-Down - 50 buy price
     77772129: 60,  # P-Up, D-Down P - 60 buy price
     77772130: 30,  # Palace Key
