@@ -239,6 +239,8 @@ itemList: typing.List[ItemData] = [
     ItemData(77772212, "Whacka Bump", ItemClassification.useful),
     ItemData(77772213, "Yoshi", ItemClassification.progression),
     ItemData(77772214, "Zap Tap", ItemClassification.useful),
+    ItemData(77772229, "Zess Dynamite", ItemClassification.filler),
+    ItemData(77772230, "Zess Special", ItemClassification.filler),
     #ItemData(77772215, "Silver Card", ItemClassification.progression),
     #ItemData(77772216, "Gold Card", ItemClassification.progression),
     #ItemData(77772217, "Platinum Card", ItemClassification.progression),
