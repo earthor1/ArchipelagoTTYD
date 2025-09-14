@@ -17,7 +17,7 @@ class ItemData:
 
 
 class TTYDItem(Item):
-    game: str = "Paper Mario: The Thousand Year Door"
+    game: str = "Paper Mario: The Thousand-Year Door"
 
 
 itemList: typing.List[ItemData] = [
