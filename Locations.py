@@ -526,7 +526,7 @@ riverside: typing.List[LocationData] = [
     LocationData("Riverside Station Back Exterior: Shine Sprite", 78780541, Rels.eki, [0xDCD8]),
     LocationData("Riverside Station Back Exterior: Thunder Rage", 78780542, Rels.eki, [0xDD20]),
     LocationData("Riverside Station Tube Mode Maze: Dried Shroom", 78780543, Rels.eki, [0xE628]),
-    LocationData("Riverside Station Tube Mode Maze: P-Up D-Down", 78780544, Rels.eki, [0xE650]),
+    LocationData("Riverside Station Tube Mode Maze: P-Up, D-Down", 78780544, Rels.eki, [0xE650]),
     LocationData("Riverside Station Ultra Boots Room: Elevator Key (Riverside)", 78780545, Rels.eki, [0xEB7C, 0xEA28]),
     LocationData("Riverside Station Ultra Boots Room: Ultra Boots", 78780546, Rels.eki, [0xE990]),
     LocationData("Riverside Station Goomba Room: Shine Sprite", 78780547, Rels.eki, [0xF5D4])
@@ -609,7 +609,7 @@ palace: typing.List[LocationData] = [
     LocationData("Palace of Shadow Second Bullet Bill Hallway: Ultra Shroom", 78780610, Rels.las, [0x1ECF4]),
     LocationData("Palace of Shadow Large Open Room: Coin", 78780611, Rels.las, [0x1F270]),
     LocationData("Palace of Shadow Large Open Room: Jammin' Jelly", 78780612, Rels.las, [0x1F298]),
-    LocationData("Palace of Shadow Large Open Room: P-Up D-Down P", 78780613, Rels.las, [0x1F2C0]),
+    LocationData("Palace of Shadow Large Open Room: P-Up, D-Down P", 78780613, Rels.las, [0x1F2C0]),
     LocationData("Riddle Tower Floor 1 NW: Palace Key (Riddle Tower)", 78780614, Rels.las, [0x251E8]),
     LocationData("Riddle Tower Floor 1 NE: Palace Key (Riddle Tower)", 78780615, Rels.las, [0x25690]),
     LocationData("Riddle Tower Floor 1 SW: Palace Key (Riddle Tower)", 78780616, Rels.las, [0x25AC0]),

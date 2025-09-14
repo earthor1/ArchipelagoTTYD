@@ -369,7 +369,7 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
             lambda state: StateLogic.tube_curse(state, world.player) and state.has("Palace Key", world.player),
         "Palace of Shadow Large Open Room: Jammin' Jelly":
             lambda state: StateLogic.tube_curse(state, world.player) and state.has("Palace Key", world.player),
-        "Palace of Shadow Large Open Room: P-Up D-Down P":
+        "Palace of Shadow Large Open Room: P-Up, D-Down P":
             lambda state: StateLogic.tube_curse(state, world.player) and state.has("Palace Key", world.player),
         "Palace of Shadow Gloomtail Room: Star Key":
             lambda state: StateLogic.tube_curse(state, world.player) and state.has("Palace Key", world.player),
@@ -521,7 +521,7 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
         "Riverside Station Tube Mode Maze: Dried Shroom":
             lambda state: state.has("Station Key 1", world.player) and state.has("Station Key 2", world.player)
                           and StateLogic.tube_curse(state, world.player) and state.has("Flurrie", world.player),
-        "Riverside Station Tube Mode Maze: P-Up D-Down":
+        "Riverside Station Tube Mode Maze: P-Up, D-Down":
             lambda state: state.has("Station Key 1", world.player) and state.has("Station Key 2", world.player)
                           and StateLogic.tube_curse(state, world.player) and state.has("Flurrie", world.player),
         "Riverside Station Back Exterior: HP Plus":
