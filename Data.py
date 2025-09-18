@@ -800,7 +800,7 @@ item_prices = {
     77772048: 20,  # Double Pain - 20 buy price
     77772049: 1,  # Dried Shroom
     77772051: 10,  # Earth Quake
-    77772052: 30,  # Elevator Key (Riverside)
+    77772052: 30,  # Elevator Key (Station)
     77772053: 30,  # Elevator Key 1
     77772054: 30,  # Elevator Key 2
     77772055: 30,  # Emerald Star
@@ -1238,7 +1238,7 @@ chapter_items = {
     3: ["Storage Key 1", "Storage Key 2"],
     4: ["Shop Key", "Black Key (Tube)", "Steeple Key", "The Letter \"p\"", "Superbombomb"],
     5: ["Chuckola Cola", "Skull Gem", "Gate Handle", "Grotto Key", "Wedding Ring", "Coconut", "Black Key (Boat)"],
-    6: ["Elevator Key (Riverside)", "Ragged Diary", "Blanket", "Autograph", "Shell Earrings", "Gold Ring", "Briefcase", "Galley Pot", "Vital Paper", "Station Key 1", "Station Key 2"],
+    6: ["Elevator Key (Station)", "Ragged Diary", "Blanket", "Autograph", "Shell Earrings", "Gold Ring", "Briefcase", "Galley Pot", "Vital Paper", "Station Key 1", "Station Key 2"],
     7: ["Goldbob Guide", "Elevator Key 1", "Elevator Key 2", "Cog", "Card Key 1", "Card Key 2", "Card Key 3", "Card Key 4"],
     8: ["Palace Key", "Palace Key (Tower)", "Star Key"],
 }

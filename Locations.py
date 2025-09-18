@@ -527,7 +527,7 @@ riverside: typing.List[LocationData] = [
     LocationData("Riverside Station Back Exterior: Thunder Rage", 78780542, Rels.eki, [0xDD20]),
     LocationData("Riverside Station Tube Mode Maze: Dried Shroom", 78780543, Rels.eki, [0xE628]),
     LocationData("Riverside Station Tube Mode Maze: P-Up, D-Down", 78780544, Rels.eki, [0xE650]),
-    LocationData("Riverside Station Ultra Boots Room: Elevator Key (Riverside)", 78780545, Rels.eki, [0xEB7C, 0xEA28]),
+    LocationData("Riverside Station Ultra Boots Room: Elevator Key (Station)", 78780545, Rels.eki, [0xEB7C, 0xEA28]),
     LocationData("Riverside Station Ultra Boots Room: Ultra Boots", 78780546, Rels.eki, [0xE990]),
     LocationData("Riverside Station Goomba Room: Shine Sprite", 78780547, Rels.eki, [0xF5D4])
 ]

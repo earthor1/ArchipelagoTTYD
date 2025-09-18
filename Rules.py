@@ -539,7 +539,7 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
                            and StateLogic.tube_curse(state, world.player)
                            and (StateLogic.ultra_boots(state, world.player) or state.has("Koops", world.player))
                            and state.has("Flurrie", world.player)),
-        "Riverside Station Ultra Boots Room: Elevator Key (Riverside)":
+        "Riverside Station Ultra Boots Room: Elevator Key (Station)":
             lambda state: (state.has("Station Key 1", world.player) and state.has("Station Key 2", world.player)
                            and StateLogic.tube_curse(state, world.player) and StateLogic.ultra_boots(state, world.player)
                            and state.has("Flurrie", world.player) and state.has("Yoshi", world.player)),
@@ -552,15 +552,15 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
             lambda state: state.has("Station Key 1", world.player) and StateLogic.ultra_boots(state, world.player),
         "Poshley Heights Sanctum Altar: Garnet Star":
             lambda state: (StateLogic.riverside(state, world.player) and state.has("Station Key 1", world.player)
-                           and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key (Riverside)", world.player)
+                           and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key (Station)", world.player)
                            and state.has("Plane Mode", world.player) and StateLogic.super_hammer(state, world.player)),
         "Poshley Heights Sanctum Altar: L Emblem":
             lambda state: (StateLogic.riverside(state, world.player) and state.has("Station Key 1", world.player)
-                           and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key (Riverside)", world.player)
+                           and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key (Station)", world.player)
                            and state.has("Plane Mode", world.player) and StateLogic.super_hammer(state, world.player)),
         "Poshley Heights Sanctum Altar: Shine Sprite":
             lambda state: (StateLogic.riverside(state, world.player) and state.has("Station Key 1", world.player)
-                           and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key (Riverside)", world.player)
+                           and StateLogic.ultra_boots(state, world.player) and state.has("Elevator Key (Station)", world.player)
                            and state.has("Plane Mode", world.player) and StateLogic.super_hammer(state, world.player)),
         "Rogueport Sewers Boggly Woods Pipe: Star Piece":
             lambda state: StateLogic.super_boots(state, world.player) and (state.has("Paper Mode", world.player) or StateLogic.super_hammer(state, world.player)),
