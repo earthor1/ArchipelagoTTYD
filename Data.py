@@ -758,14 +758,14 @@ item_prices = {
     77772005: 50,  # Attack FX R - 50 buy price
     77772006: 50,  # Attack FX Y - 50 buy price
     77772007: 30,  # Autograph
-    77772008: 30,  # Black Key (Plane Curse)
-    77772009: 30,  # Black Key (Paper Curse)
-    77772010: 30,  # Black Key (Tube Curse)
-    77772011: 30,  # Black Key (Boat Curse)
+    77772008: 30,  # Black Key (Plane)
+    77772009: 30,  # Black Key (Paper)
+    77772010: 30,  # Black Key (Tube)
+    77772011: 30,  # Black Key (Boat)
     77772012: 30,  # Blanket
     77772013: 30,  # Blimp Ticket
     77772014: 30,  # Blue Key
-    77772015: 30,  # Boat Curse
+    77772015: 30,  # Boat Mode
     77772016: 30,  # Bobbery
     77772017: 20,  # Boo's Sheet
     77772018: 30,  # Briefcase
@@ -879,13 +879,13 @@ item_prices = {
     77772128: 50,  # P-Up, D-Down - 50 buy price
     77772129: 60,  # P-Up, D-Down P - 60 buy price
     77772130: 30,  # Palace Key
-    77772131: 30,  # Palace Key (Riddle Tower)
-    77772132: 30,  # Paper Curse
+    77772131: 30,  # Palace Key (Tower)
+    77772132: 30,  # Paper Mode
     77772133: 5,  # Peachy Peach
     77772134: 50,  # Peekaboo - 50 buy price
     77772135: 40,  # Piercing Blow - 40 buy price
     77772136: 50,  # Pity Flower - 50 buy price
-    77772137: 30,  # Plane Curse
+    77772137: 30,  # Plane Mode
     77772138: 5,  # Point Swap
     77772139: 5,  # POW Block
     77772140: 50,  # Power Bounce - 50 buy price
@@ -946,7 +946,7 @@ item_prices = {
     77772197: 50,  # Timing Tutor - 50 buy price
     77772198: 50,  # Tornado Jump - 50 buy price
     77772199: 30,  # Train Ticket
-    77772200: 30,  # Tube Curse
+    77772200: 30,  # Tube Mode
     77772201: 2,  # Turtley Leaf
     77772202: 30,  # Progressive Boots
     77772204: 50,  # Ultra Shroom
@@ -1233,14 +1233,14 @@ stars = [
 ]
 
 chapter_items = {
-    1: ["Castle Key", "Sun Stone", "Moon Stone", "Black Key (Paper Curse)"],
+    1: ["Castle Key", "Sun Stone", "Moon Stone", "Black Key (Paper)"],
     2: ["Puni Orb", "Necklace", "Red Key", "Blue Key"],
     3: ["Storage Key 1", "Storage Key 2"],
-    4: ["Shop Key", "Black Key (Tube Curse)", "Steeple Key", "The Letter \"p\"", "Superbombomb"],
-    5: ["Chuckola Cola", "Skull Gem", "Gate Handle", "Grotto Key", "Wedding Ring", "Coconut", "Black Key (Boat Curse)"],
+    4: ["Shop Key", "Black Key (Tube)", "Steeple Key", "The Letter \"p\"", "Superbombomb"],
+    5: ["Chuckola Cola", "Skull Gem", "Gate Handle", "Grotto Key", "Wedding Ring", "Coconut", "Black Key (Boat)"],
     6: ["Elevator Key (Riverside)", "Ragged Diary", "Blanket", "Autograph", "Shell Earrings", "Gold Ring", "Briefcase", "Galley Pot", "Vital Paper", "Station Key 1", "Station Key 2"],
     7: ["Goldbob Guide", "Elevator Key 1", "Elevator Key 2", "Cog", "Card Key 1", "Card Key 2", "Card Key 3", "Card Key 4"],
-    8: ["Palace Key", "Palace Key (Riddle Tower)", "Star Key"],
+    8: ["Palace Key", "Palace Key (Tower)", "Star Key"],
 }
 
 pit_exclusive_tattle_stars_required = {
