@@ -18,7 +18,7 @@ class LocationData:
 
 
 class TTYDLocation(Location):
-    game: str = "Paper Mario The Thousand Year Door"
+    game: str = "Paper Mario: The Thousand-Year Door"
 
 
 rogueport: typing.List[LocationData] = [
@@ -161,8 +161,8 @@ sewers: typing.List[LocationData] = [
     LocationData("Rogueport Sewers Black Key Room: Happy Heart P", 78780137, Rels.tik, [0x18830]),
     LocationData("Rogueport Sewers Black Key Room: Pretty Lucky", 78780138, Rels.tik, [0x18B74]),
     LocationData("Rogueport Sewers Black Key Room: Star Piece", 78780139, Rels.tik, [0x18B90]),
-    LocationData("Rogueport Sewers Thousand Year Door: Shine Sprite", 78780140, Rels.tik, [0x1F01C]),
-    LocationData("Rogueport Sewers Thousand Year Door: Star Piece", 78780141, Rels.tik, [0x1F0B4]),
+    LocationData("Rogueport Sewers Thousand-Year Door: Shine Sprite", 78780140, Rels.tik, [0x1F01C]),
+    LocationData("Rogueport Sewers Thousand-Year Door: Star Piece", 78780141, Rels.tik, [0x1F0B4]),
     LocationData("Rogueport Sewers Star Piece House: Star Piece", 78780704, Rels.tik, [0x212AC]),
     LocationData("Rogueport Sewers East Enemy Hall: Fire Flower", 78780147, Rels.tik, [0x2BAC8]),
     LocationData("Rogueport Sewers East Enemy Hall: Mushroom", 78780148, Rels.tik, [0x2BAF0]),

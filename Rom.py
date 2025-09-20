@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 
 
 class TTYDPatchExtension(APPatchExtension):
-    game = "Paper Mario The Thousand Year Door"
+    game = "Paper Mario: The Thousand-Year Door"
 
     @staticmethod
     def patch_mod(caller: "TTYDProcedurePatch") -> None:
@@ -196,7 +196,7 @@ def get_rel_path(rel: Rels):
 
 
 class TTYDProcedurePatch(APProcedurePatch, APTokenMixin):
-    game = "Paper Mario The Thousand Year Door"
+    game = "Paper Mario: The Thousand-Year Door"
     hash = "4b1a5897d89d9e74ec7f630eefdfd435"
     patch_file_ending = ".apttyd"
     result_file_ending = ".iso"

@@ -39,7 +39,7 @@ class TTYDWebWorld(WebWorld):
     tutorials = [
         Tutorial(
             tutorial_name='Setup Guide',
-            description='A guide to setting up Paper Mario; The Thousand Year Door for Archipelago.',
+            description='A guide to setting up Paper Mario: The Thousand-Year Door for Archipelago.',
             language='English',
             file_name='setup_en.md',
             link='setup/en',
@@ -58,7 +58,7 @@ class TTYDSettings(Group):
 
     class RomFile(UserFilePath):
         """File name of the TTYD US iso"""
-        copy_to = "Paper Mario - The Thousand Year Door.iso"
+        copy_to = "Paper Mario - The Thousand-Year Door (USA).iso"
         description = "US TTYD .iso File"
 
     dolphin_path: DolphinPath = DolphinPath(None)
@@ -70,7 +70,7 @@ class TTYDWorld(World):
     """
     TTYD
     """
-    game = "Paper Mario The Thousand Year Door"
+    game = "Paper Mario: The Thousand-Year Door"
     web = TTYDWebWorld()
 
     options_dataclass = TTYDOptions
