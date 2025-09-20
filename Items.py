@@ -108,7 +108,7 @@ itemList: typing.List[ItemData] = [
     ItemData(77772084, "Happy Heart", ItemClassification.useful),
     ItemData(77772085, "Happy Heart P", ItemClassification.useful),
     ItemData(77772086, "Head Rattle", ItemClassification.useful),
-    ItemData(77772087, "Heart Finder", ItemClassification.filler),
+    ItemData(77772087, "Heart Finder", ItemClassification.useful),
     ItemData(77772088, "Honey Syrup", ItemClassification.filler),
     ItemData(77772089, "Horsetail", ItemClassification.filler),
     ItemData(77772090, "Hot Dog", ItemClassification.filler),
