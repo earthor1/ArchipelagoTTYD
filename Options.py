@@ -135,6 +135,13 @@ class AlwaysSucceedConditions(Toggle):
     display_name = "Always Succeed Conditions"
 
 
+class ZeroBPFirstAttack(Toggle):
+    """
+    The First Attack badge costs 0 BP, just like the remake.
+    """
+    display_name = "0 BP First Attack"
+
+
 class ExperienceMultiplier(Range):
     """
     Multiplies the experience you gain from battles.
@@ -255,6 +262,7 @@ class TTYDOptions(PerGameCommonOptions):
     open_westside: OpenWestside
     permanent_peekaboo: PermanentPeekaboo
     full_run_bar: FullRunBar
+    zero_bp_first_attack: ZeroBPFirstAttack
     experience_multiplier: ExperienceMultiplier
     starting_hp: StartingHP
     starting_fp: StartingFP
