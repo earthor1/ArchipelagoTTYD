@@ -142,6 +142,32 @@ class ZeroBPFirstAttack(Toggle):
     display_name = "0 BP First Attack"
 
 
+class MusicSettings(Choice):
+    """
+    Choose in-game music settings.
+    normal: Music will not change.
+    silent: No music will play at all.
+    randomized: Music will be randomized.
+    """
+    display_name = "Music Settings"
+    option_normal = 0
+    option_silent = 1
+    option_randomized = 2
+    default = 0
+
+
+class BlockVisibility(Choice):
+    """
+    Choose how visible item blocks are.
+    normal: All blocks will keep their vanilla visibility.
+    all_visible: All blocks will be visible.
+    """
+    display_name = "Block Visibility"
+    option_normal = 0
+    option_all_visible = 1
+    default = 0
+
+
 class ExperienceMultiplier(Range):
     """
     Multiplies the experience you gain from battles.
@@ -263,6 +289,8 @@ class TTYDOptions(PerGameCommonOptions):
     permanent_peekaboo: PermanentPeekaboo
     full_run_bar: FullRunBar
     zero_bp_first_attack: ZeroBPFirstAttack
+    music_settings: MusicSettings
+    block_visibility: BlockVisibility
     experience_multiplier: ExperienceMultiplier
     starting_hp: StartingHP
     starting_fp: StartingFP
