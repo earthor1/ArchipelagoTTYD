@@ -164,8 +164,8 @@ class TTYDWorld(World):
             self.lock_item("Shadow Queen", "Victory")
         if self.options.limit_chapter_eight:
             for location in [location for location in palace + riddle_tower if "Palace Key" in location.name]:
-                if "Palace Key (Riddle Tower)" in location.name:
-                    self.lock_item(location.name, "Palace Key (Riddle Tower)")
+                if "Palace Key (Tower)" in location.name:
+                    self.lock_item(location.name, "Palace Key (Tower)")
                 elif "Palace Key" in location.name:
                     self.lock_item(location.name, "Palace Key")
             self.lock_item("Palace of Shadow Gloomtail Room: Star Key", "Star Key")
@@ -220,11 +220,11 @@ class TTYDWorld(World):
                 freq = item_frequencies.get(item.itemName, 1)
                 required_items += [item.itemName for _ in range(freq)]
         for itemName in required_items:
-            if itemName in ["Star Key", "Palace Key", "Palace Key (Riddle Tower)"] and self.options.palace_skip:
+            if itemName in ["Star Key", "Palace Key", "Palace Key (Tower)"] and self.options.palace_skip:
                 continue
             item = self.create_item(itemName)
             if itemName in self.limited_item_names:
-                if itemName not in ["Star Key", "Palace Key", "Palace Key (Riddle Tower)"]:
+                if itemName not in ["Star Key", "Palace Key", "Palace Key (Tower)"]:
                     self.limited_items.append(item)
                     added_items += 1
             else:
