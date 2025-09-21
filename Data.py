@@ -763,7 +763,7 @@ item_prices = {
     77772046: 50,  # Double Dip - 50 buy price
     77772047: 50,  # Double Dip P - 50 buy price
     77772048: 20,  # Double Pain - 20 buy price
-    77772224: 8, # Dried Bouquet
+    77772224: 8,  # Dried Bouquet
     77772049: 1,  # Dried Shroom
     77772051: 10,  # Earth Quake
     77772052: 30,  # Elevator Key (Station)
