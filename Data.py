@@ -1,5 +1,5 @@
 from enum import Enum
-
+from BaseClasses import ItemClassification
 
 class Rels(Enum):
     aaa = "aaa"
@@ -1235,4 +1235,11 @@ pit_exclusive_tattle_stars_required = {
         "Tattle: Bob-ulk",
         "Tattle: Bonetail"
     ]
+}
+
+classification_to_color = {
+    ItemClassification.filler: "00d6d6",
+    ItemClassification.useful: "6d8be8",
+    ItemClassification.progression: "af99ef",
+    ItemClassification.trap: "fa8072",
 }
