@@ -213,12 +213,10 @@ def get_rules_dict(world: "TTYDWorld") -> dict[str, Any]:
             lambda state: StateLogic.key_any(state, world.player) and state.has("Puni Orb", world.player),
         "Great Tree 100-Puni Pedestal: Coin":
             lambda state: (state.has("Red Key", world.player) and state.has("Puni Orb", world.player)
-                           and state.has("Flurrie", world.player) and state.has("Blue Key", world.player)
-                           and StateLogic.super_boots(state, world.player)),
+                           and state.has("Flurrie", world.player) and state.has("Blue Key", world.player)),
         "Great Tree 100-Puni Pedestal: Star Piece":
             lambda state: (state.has("Red Key", world.player) and state.has("Puni Orb", world.player)
-                           and state.has("Flurrie", world.player) and state.has("Blue Key", world.player)
-                           and StateLogic.super_boots(state, world.player)),
+                           and state.has("Flurrie", world.player) and state.has("Blue Key", world.player)),
         "Great Tree Fake Pedestal: Star Piece":
             lambda state: (state.has("Red Key", world.player) and state.has("Puni Orb", world.player)
                            and state.has("Flurrie", world.player) and state.has("Blue Key", world.player)),
