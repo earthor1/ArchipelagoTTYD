@@ -4,11 +4,13 @@ import subprocess
 import traceback
 import typing
 
+from flask import ctx
+
 import settings
 
 import Patch
 import Utils
-from CommonClient import ClientCommandProcessor, CommonContext, get_base_parser, gui_enabled, logger, server_loop
+from CommonClient import ClientCommandProcessor, get_base_parser, gui_enabled, logger, server_loop
 import dolphin_memory_engine as dolphin
 
 from NetUtils import NetworkItem, ClientStatus
@@ -31,13 +33,14 @@ SHOP_ITEM_PURCHASED = 0xD7
 tracker_loaded = False
 try:
     from worlds.tracker.TrackerClient import TrackerGameContext as SuperContext
+
     tracker_loaded = True
-    print("Tracker loaded")
+    if isinstance(ctx, SuperContext):
+        print("Tracker Loaded")
 except ModuleNotFoundError:
     from CommonClient import CommonContext as SuperContext
 
-class YourGameContext(SuperContext):
-    tags = {"AP"}
+
 
 def read_string(address: int, length: int):
     try:
@@ -85,7 +88,7 @@ def gsw_check(index):
 
 
 class TTYDCommandProcessor(ClientCommandProcessor):
-    def __init__(self, ctx: CommonContext):
+    def __init__(self, ctx: SuperContext):
         super().__init__(ctx)
 
     def _cmd_set_gswf(self, bit_number: int):
@@ -104,9 +107,10 @@ class TTYDCommandProcessor(ClientCommandProcessor):
         logger.info(f"GSWF Check: {result}")
 
 
-class TTYDContext(CommonContext):
+class TTYDContext(SuperContext):
     command_processor = TTYDCommandProcessor
     game = "Paper Mario: The Thousand-Year Door"
+    tags = {"AP"}
     items_handling = 0b101
     dolphin_connected: bool = False
     seed_verified: bool = False
