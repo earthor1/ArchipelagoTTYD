@@ -28,6 +28,17 @@ SHOP_POINTER = 0x8041EB60
 SHOP_ITEM_OFFSET = 0x2F
 SHOP_ITEM_PURCHASED = 0xD7
 
+tracker_loaded = False
+try:
+    from worlds.tracker.TrackerClient import TrackerGameContext as SuperContext
+    tracker_loaded = True
+    print("Tracker loaded")
+except ModuleNotFoundError:
+    from CommonClient import CommonContext as SuperContext
+
+class YourGameContext(SuperContext):
+    tags = {"AP"}
+
 def read_string(address: int, length: int):
     try:
         return dolphin.read_bytes(address, length).decode().strip("\0")
@@ -139,6 +150,11 @@ class TTYDContext(CommonContext):
         self.checked_locations = set()
         self.seed_name = None
         self.seed_verified = False
+
+    def make_gui(self):
+            ui = super().make_gui()
+            ui.base_title = "TTYD CLIENT"
+            return ui
 
     def run_gui(self):
         from kvui import GameManager
