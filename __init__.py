@@ -165,13 +165,12 @@ class TTYDWorld(World):
             self.lock_item("Palace of Shadow Gloomtail Room: Star Key", "Star Key")
         if self.options.pit_items == PitItems.option_vanilla:
             self.lock_vanilla_items(get_locations_by_tags("pit_floor"))
-        if not self.options.piecesanity == Piecesanity.option_all:
-            if self.options.piecesanity == Piecesanity.option_vanilla:
-                self.lock_vanilla_items(get_locations_by_tags("star_piece"))
-            elif self.options.piecesanity == Piecesanity.option_nonpanel_only:
-                self.lock_vanilla_items(get_locations_by_tags("panel"))
+        if self.options.piecesanity == Piecesanity.option_vanilla:
+            self.lock_vanilla_items_remove_from_pool(get_locations_by_tags("star_piece"))
+        if self.options.piecesanity == Piecesanity.option_nonpanel_only:
+            self.lock_vanilla_items_remove_from_pool(get_locations_by_tags("panel"))
         if not self.options.shopsanity:
-            self.lock_vanilla_items(get_locations_by_tags("shop"))
+            self.lock_vanilla_items_remove_from_pool(get_locations_by_tags("shop"))
 
 
     def limit_tattle_locations(self):
@@ -314,6 +313,15 @@ class TTYDWorld(World):
         vanilla_item_names = get_vanilla_item_names(locations)
         for location in locations:
             self.get_location(location.name).place_locked_item(self.create_item(vanilla_item_names.pop(0)))
+            
+    def lock_vanilla_items_remove_from_pool(self, locations: LocationData | List[LocationData]) -> None:
+        if isinstance(locations, LocationData):
+            locations = [locations]
+        vanilla_item_names = get_vanilla_item_names(locations)
+        for location in locations:
+            item_table.get(vanilla_item_names[0], ItemData(None, "Unknown", "filler")).frequency -= 1
+            self.get_location(location.name).place_locked_item(self.create_item(vanilla_item_names.pop(0)))
+
 
     def get_filler_item_name(self) -> str:
         return self.random.choice(list(filter(lambda item: item.progression == ItemClassification.filler, itemList))).item_name
