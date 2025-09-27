@@ -227,8 +227,6 @@ class TTYDWorld(World):
             if item.item_name != starting_partners[self.options.starting_partner.value - 1]:
                 useful_items += [item.item_name for _ in range(item.frequency)]
         for item_name in useful_items:
-            if self.options.piecesanity == Piecesanity.option_vanilla and "Star Piece" in item_name:
-                continue
             self.items.append(self.create_item(item_name))
             added_items += 1
 
