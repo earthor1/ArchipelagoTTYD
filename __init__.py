@@ -317,8 +317,9 @@ class TTYDWorld(World):
             locations = [locations]
         vanilla_item_names = get_vanilla_item_names(locations)
         for location in locations:
-            item_table.get(vanilla_item_names[0], ItemData(None, "Unknown", "filler")).frequency -= 1
-            self.get_location(location.name).place_locked_item(self.create_item(vanilla_item_names.pop(0)))
+            item_name = vanilla_item_names.pop(0)
+            item_table.get(item_name, ItemData(None, "Unknown", "filler")).frequency -= 1
+            self.get_location(location.name).place_locked_item(self.create_item(item_name))
 
 
     def get_filler_item_name(self) -> str:
