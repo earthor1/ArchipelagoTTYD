@@ -164,7 +164,7 @@ class TTYDWorld(World):
                     self.lock_item(location.name, "Palace Key")
             self.lock_item("Palace of Shadow Gloomtail Room: Star Key", "Star Key")
         if self.options.pit_items == PitItems.option_vanilla:
-            self.lock_vanilla_items(get_locations_by_tags("pit_floor"))
+            self.lock_vanilla_items_remove_from_pool(get_locations_by_tags("pit_floor"))
         if self.options.piecesanity == Piecesanity.option_vanilla:
             self.lock_vanilla_items_remove_from_pool(get_locations_by_tags("star_piece"))
         if self.options.piecesanity == Piecesanity.option_nonpanel_only:
