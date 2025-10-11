@@ -111,7 +111,7 @@ class TTYDWorld(World):
                             f"Reducing number of stars required to enter the palace of shadow for accessibility.")
             self.options.palace_stars.value = self.options.goal_stars.value
         chapters = [i for i in range(1, 8)]
-        for i in range((self.options.palace_stars.value if self.options.goal == Goal.option_shadow_queen else self.options.goal_stars.value)):
+        for i in range(self.options.goal_stars.value):
             self.required_chapters.append(chapters.pop(self.multiworld.random.randint(0, len(chapters) - 1)))
         if self.options.limit_chapter_logic:
             self.limited_chapters += chapters
@@ -127,10 +127,6 @@ class TTYDWorld(World):
                 self.disabled_locations.update(["Tattle: Shadow Queen"])
         if self.options.tattlesanity and self.options.disable_intermissions:
             self.disabled_locations.update(["Tattle: Lord Crump"])
-        if self.options.starting_partner == StartingPartner.option_random_partner:
-            self.options.starting_partner.value = self.random.randint(1, 7)
-        if self.options.yoshi_color == YoshiColor.option_random_color:
-            self.options.yoshi_color.value = self.random.randint(0, 6)
         if self.options.tattlesanity:
             extra_disabled = [location.name for name, locations in get_regions_dict().items()
                 if name in self.excluded_regions for location in locations]
@@ -151,7 +147,8 @@ class TTYDWorld(World):
         if self.options.tattlesanity:
             self.limit_tattle_locations()
         self.lock_item_remove_from_pool("Rogueport Center: Goombella", starting_partners[self.options.starting_partner.value - 1])
-        self.lock_vanilla_items_remove_from_pool(get_locations_by_tags("star"))
+        if not self.options.star_shuffle:
+            self.lock_vanilla_items_remove_from_pool(get_locations_by_tags("star"))
         if self.options.goal == Goal.option_shadow_queen:
             self.lock_item("Shadow Queen", "Victory")
         if self.options.limit_chapter_eight:
@@ -170,6 +167,8 @@ class TTYDWorld(World):
             self.lock_vanilla_items_remove_from_pool(get_locations_by_tags(["star_piece", "panel"]))
         if self.options.piecesanity == Piecesanity.option_nonpanel_only:
             self.lock_vanilla_items_remove_from_pool(get_locations_by_tags("panel"))
+        if not self.options.shinesanity:
+            self.lock_vanilla_items_remove_from_pool(get_locations_by_tags("shine"))
         if not self.options.shopsanity:
             self.lock_vanilla_items_remove_from_pool(get_locations_by_tags("shop"))
         if self.options.pit_items == PitItems.option_filler:
@@ -281,7 +280,7 @@ class TTYDWorld(World):
         return {
             "goal": self.options.goal.value,
             "goal_stars": self.options.goal_stars.value,
-            "chapter_clears": self.options.palace_stars.value, # TODO: Update name to palace_stars once ready to deprecate
+            "palace_stars": self.options.palace_stars.value,
             "pit_items": self.options.pit_items.value,
             "limit_chapter_logic": self.options.limit_chapter_logic.value,
             "limit_chapter_eight": self.options.limit_chapter_eight.value,
@@ -341,10 +340,6 @@ class TTYDWorld(World):
         if change:
             if item.name in stars:
                 state.prog_items[item.player]["stars"] += 1
-            for star in self.required_chapters:
-                if item.name == stars[star - 1]:
-                    state.prog_items[item.player]["required_stars"] += 1
-                    break
         return change
 
     def remove(self, state: "CollectionState", item: "Item") -> bool:
@@ -352,10 +347,6 @@ class TTYDWorld(World):
         if change:
             if item.name in stars:
                 state.prog_items[item.player]["stars"] -= 1
-            for star in self.required_chapters:
-                if item.name == stars[star - 1]:
-                    state.prog_items[item.player]["required_stars"] -= 1
-                    break
         return change
 
     def generate_output(self, output_directory: str) -> None:
