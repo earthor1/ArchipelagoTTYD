@@ -19,8 +19,8 @@ class Goal(Choice):
 
 class GoalStars(Range):
     """
-    This determines how many crystal stars are required for the goal option crystal_stars.
-    This is only used if the goal option is set to crystal_stars.
+    This determines how many crystal stars are required to enter the Throne Room in the Palace of Shadow.
+    This also determines how many stars are required to goal with the crystal_stars goal selected.
     """
     display_name = "Goal Crystal Stars"
     range_start = 1
@@ -36,6 +36,14 @@ class PalaceStars(Range):
     range_start = 0
     range_end = 7
     default = 7
+
+
+class StarShuffle(Toggle):
+    """
+    Crystal Stars will be added as items to the item pool.
+    Completing a chapter will reward you with a random item.
+    """
+    display_name = "Star Shuffle"
 
 
 class PitItems(Choice):
@@ -60,7 +68,7 @@ class TattleSanityOption(Toggle):
     display_name = "Tattlesanity"
 
 
-class Piecesanity(DefaultOnToggle):
+class Piecesanity(Choice):
     """
     Determines if Star Piece locations will be randomized.
     vanilla: Star Piece locations will remain in their original locations.
@@ -71,7 +79,14 @@ class Piecesanity(DefaultOnToggle):
     option_vanilla = 0
     option_nonpanel_only = 1
     option_all = 2
-    default = 2
+    default = 1
+
+
+class Shinesanity(DefaultOnToggle):
+    """
+    Shine Sprites will be randomized.
+    """
+    display_name = "Shinesanity"
 
 
 class Shopsanity(DefaultOnToggle):
@@ -188,7 +203,7 @@ class BlockVisibility(Choice):
     display_name = "Block Visibility"
     option_normal = 0
     option_all_visible = 1
-    default = 0
+    default = 1
 
 
 class ExperienceMultiplier(Range):
@@ -263,7 +278,6 @@ class StartingPartner(Choice):
     option_flurrie = 5
     option_vivian = 6
     option_ms_mowz = 7
-    option_random_partner = 8
     default = 1
 
 
@@ -279,7 +293,6 @@ class YoshiColor(Choice):
     option_pink = 4
     option_black = 5
     option_white = 6
-    option_random_color = 7
     default = 0
 
 
@@ -299,9 +312,11 @@ class TTYDOptions(PerGameCommonOptions):
     goal: Goal
     goal_stars: GoalStars
     palace_stars: PalaceStars
+    star_shuffle: StarShuffle
     tattlesanity: TattleSanityOption
     piecesanity: Piecesanity
     shopsanity: Shopsanity
+    shinesanity: Shinesanity
     pit_items: PitItems
     limit_chapter_logic: LimitChapterLogic
     limit_chapter_eight: LimitChapterEight
