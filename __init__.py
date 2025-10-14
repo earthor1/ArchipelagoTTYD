@@ -88,6 +88,12 @@ class TTYDWorld(World):
     limited_item_names: set
     limited_items: List[TTYDItem]
     limited_state: CollectionState = None
+    ut_can_gen_without_yaml = True
+
+    @staticmethod
+    def interpret_slot_data(slot_data: dict[str, Any]) -> dict[str, Any]:
+        # Trigger a regen in UT
+        return slot_data
 
     def generate_early(self) -> None:
         self.disabled_locations = set()
@@ -98,6 +104,26 @@ class TTYDWorld(World):
         self.limited_chapter_locations = set()
         self.limited_item_names = set()
         self.limited_items = []
+
+        #implementing yaml-less UT support
+        if hasattr(self.multiworld, "generation_is_fake"):
+            if hasattr(self.multiworld, "re_gen_passthrough"):
+                re_gen_passthrough = getattr(self.multiworld, "re_gen_passthrough")
+
+                if "Paper Mario: The Thousand-Year Door" in re_gen_passthrough:
+                    slot_data = re_gen_passthrough["Paper Mario: The Thousand-Year Door"]
+                    self.options.goal.value = slot_data["goal"]
+                    self.options.goal_stars.value = slot_data["goal_stars"]
+                    self.options.palace_stars.value = slot_data["chapter_clears"]
+                    self.options.pit_items.value = slot_data["pit_items"]
+                    self.options.limit_chapter_logic.value = slot_data["limit_chapter_logic"]
+                    self.options.limit_chapter_eight.value = slot_data["limit_chapter_eight"]
+                    self.options.palace_skip.value = slot_data["palace_skip"]
+                    self.options.open_westside.value = slot_data["westside"]
+                    self.options.tattlesanity.value = slot_data["tattlesanity"]
+                    self.options.disable_intermissions.value = slot_data["disable_intermissions"]
+            return
+
         if self.options.limit_chapter_eight and self.options.palace_skip:
             logging.warning(f"{self.player_name}'s has enabled both Palace Skip and Limit Chapter 8. "
                             f"Disabling the Limit Chapter 8 option due to incompatibility.")
@@ -309,7 +335,7 @@ class TTYDWorld(World):
             locations = [locations]
         for location in locations:
             self.get_location(location.name).place_locked_item(self.create_item(items_by_id[location.vanilla_item].item_name))
-            
+
     def lock_vanilla_items_remove_from_pool(self, locations: LocationData | List[LocationData]) -> None:
         if isinstance(locations, LocationData):
             locations = [locations]

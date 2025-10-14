@@ -8,7 +8,7 @@ import settings
 
 import Patch
 import Utils
-from CommonClient import ClientCommandProcessor, CommonContext, get_base_parser, gui_enabled, logger, server_loop
+from CommonClient import ClientCommandProcessor, get_base_parser, gui_enabled, logger, server_loop
 import dolphin_memory_engine as dolphin
 
 from NetUtils import NetworkItem, ClientStatus
@@ -27,6 +27,14 @@ ROOM = 0x803DF728
 SHOP_POINTER = 0x8041EB60
 SHOP_ITEM_OFFSET = 0x2F
 SHOP_ITEM_PURCHASED = 0xD7
+
+tracker_loaded = False
+try:
+    from worlds.tracker.TrackerClient import TrackerGameContext as cmmCtx
+    tracker_loaded = True
+except ModuleNotFoundError:
+    from CommonClient import CommonContext as cmmCtx
+    tracker_loaded = False
 
 def read_string(address: int, length: int):
     try:
@@ -73,7 +81,7 @@ def gsw_check(index):
 
 
 class TTYDCommandProcessor(ClientCommandProcessor):
-    def __init__(self, ctx: CommonContext):
+    def __init__(self, ctx: cmmCtx):
         super().__init__(ctx)
 
     def _cmd_set_gswf(self, bit_number: int):
@@ -95,6 +103,7 @@ class TTYDCommandProcessor(ClientCommandProcessor):
 class TTYDContext(CommonContext):
     command_processor = TTYDCommandProcessor
     game = "Paper Mario: The Thousand-Year Door"
+    tags = {"AP"}
     items_handling = 0b101
     dolphin_connected: bool = False
     seed_verified: bool = False
@@ -139,15 +148,13 @@ class TTYDContext(CommonContext):
         self.seed_name = None
         self.seed_verified = False
 
-    def run_gui(self):
-        from kvui import GameManager
+    def make_gui(self) -> "type[kvui.GameManager]":
+        ui = super().make_gui()
+        ui.logging_pairs = [("Client", "Archipelago")]
+        ui.base_title = "Archipelago TTYD Client"
 
-        class TTYDManager(GameManager):
-            logging_pairs = [("Client", "Archipelago")]
-            base_title = "Archipelago TTYD Client"
+        return ui
 
-        self.ui = TTYDManager(self)
-        self.ui_task = asyncio.create_task(self.ui.async_run(), name="UI")
 
     async def receive_items(self):
         current_length = dolphin.read_word(RECEIVED_LENGTH)
@@ -240,6 +247,11 @@ async def ttyd_sync_task(ctx: TTYDContext):
                             continue
                         ctx.seed_verified = True
                         logger.info("ROM Seed verified successfully.")
+
+                        #UT Connection
+                        if tracker_loaded:
+                            ctx.run_generator()
+
                     if "DeathLink" in ctx.tags:
                         await ctx.check_death()
                     if not ctx.save_loaded():
