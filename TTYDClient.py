@@ -122,6 +122,7 @@ class TTYDContext(CommonContext):
         await self.send_connect()
 
     def on_package(self, cmd: str, args: dict):
+        super().on_package(cmd, args)
         if cmd in {"Connected"}:
             self.slot = args["slot"]
             self.slot_data = args["slot_data"]
@@ -247,11 +248,6 @@ async def ttyd_sync_task(ctx: TTYDContext):
                             continue
                         ctx.seed_verified = True
                         logger.info("ROM Seed verified successfully.")
-
-                        #UT Connection
-                        if tracker_loaded:
-                            ctx.run_generator()
-
                     if "DeathLink" in ctx.tags:
                         await ctx.check_death()
                     if not ctx.save_loaded():
@@ -321,6 +317,8 @@ def launch(*args):
         ctx = TTYDContext(args.connect, args.password)
         ctx.server_task = asyncio.create_task(server_loop(ctx), name="ServerLoop")
         if gui_enabled:
+            if tracker_loaded:  # UT Connection
+                ctx.run_generator()
             ctx.run_gui()
         ctx.run_cli()
         ctx.gl_sync_task = asyncio.create_task(ttyd_sync_task(ctx), name="Gauntlet Legends Sync Task")
