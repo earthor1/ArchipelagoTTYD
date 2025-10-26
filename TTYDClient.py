@@ -100,7 +100,7 @@ class TTYDCommandProcessor(ClientCommandProcessor):
         logger.info(f"GSWF Check: {result}")
 
 
-class TTYDContext(CommonContext):
+class TTYDContext(cmmCtx):
     command_processor = TTYDCommandProcessor
     game = "Paper Mario: The Thousand-Year Door"
     tags = {"AP"}
