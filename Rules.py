@@ -25,6 +25,11 @@ def set_rules(world: "TTYDWorld"):
             continue
         forbid_items_for_player(world.get_location(location.name), set([item for item in stars]), world.player)
 
+    for location in get_locations_by_tags("dazzle"):
+        if location.name in world.disabled_locations:
+            continue
+        forbid_items_for_player(world.get_location(location.name), {"Star Piece"}, world.player)
+
 def set_tattle_rules(world: "TTYDWorld"):
     for location in get_locations_by_tags("tattle"):
         if location.name in world.disabled_locations:
@@ -140,7 +145,7 @@ def get_tattle_rules_dict() -> dict[str, typing.List[int]]:
         "Tattle: Vivian": [78780215],
         "Tattle: Marilyn": [78780215, 78780622],
         "Tattle: Beldam": [78780215, 78780622],
-        "Tattle: X-Naut": [78780231, 78780584],
+        "Tattle: X-Naut": [78780231, 78780595],
         "Tattle: Yux": [78780231],
         "Tattle: Mini-Yux": [78780231],
         "Tattle: Pider": [78780241, 78780267, 78780639],
