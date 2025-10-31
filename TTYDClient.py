@@ -123,6 +123,7 @@ class TTYDContext(cmmCtx):
 
     def on_package(self, cmd: str, args: dict):
         super().on_package(cmd, args)
+        self.items_handling = 0b101
         if cmd in {"Connected"}:
             self.slot = args["slot"]
             self.slot_data = args["slot_data"]
@@ -170,6 +171,7 @@ class TTYDContext(cmmCtx):
         dolphin.write_bytes(RECEIVED_ITEM_ARRAY, packed_data)
         dolphin.write_word(RECEIVED_LENGTH, items)
         dolphin.write_word(RECEIVED_INDEX, index + items)
+        print("items handling is set to", self.items_handling)
 
 
     async def check_ttyd_locations(self):
