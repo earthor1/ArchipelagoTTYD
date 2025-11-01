@@ -69,7 +69,10 @@ class TTYDSettings(Group):
 
 class TTYDWorld(World):
     """
-    TTYD
+    Paper Mario: The Thousand-Year Door is a quirky, turn-based RPG with a paper-craft twist.
+    Mario teams up with oddball allies to stop an ancient evil sealed behind a magical door.
+    Set in Rogueport, the game mixes platforming, puzzles, and witty, self-aware dialogue.
+    Battles play out on a stage with timed button presses and a live audience cheering you on.
     """
     game = "Paper Mario: The Thousand-Year Door"
     web = TTYDWebWorld()
@@ -346,6 +349,8 @@ class TTYDWorld(World):
             "disable_intermissions": self.options.disable_intermissions.value,
             "cutscene_skip": self.options.cutscene_skip.value,
             "death_link": self.options.death_link.value,
+            "piecesanity": self.options.piecesanity.value,
+            "shinesanity": self.options.shinesanity.value
         }
 
     def create_item(self, name: str) -> TTYDItem:
