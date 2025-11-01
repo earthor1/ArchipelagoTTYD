@@ -77,17 +77,21 @@ class TTYDCommandProcessor(ClientCommandProcessor):
         super().__init__(ctx)
 
     def _cmd_set_gswf(self, bit_number: int):
+        """Used to manually set a GSWF bit."""
         byte_address, bit = gswf_set(int(bit_number))
         logger.info(f"Bit {bit} written at {byte_address}")
 
     def _cmd_check_gswf(self, bit_number: int):
+        """Used to manually check a GSWF bit."""
         result = gswf_check(int(bit_number))
         logger.info(f"GSWF Check: 0x{format(result, 'x')}")
 
     def _cmd_set_gsw(self, gsw: int, value: int):
+        """Used to manually set a GSW flag."""
         gsw_set(int(gsw), int(value))
 
     def _cmd_check_gsw(self, gsw: int):
+        """Used to manually check a GSW flag."""
         result = gsw_check(int(gsw))
         logger.info(f"GSWF Check: {result}")
 
