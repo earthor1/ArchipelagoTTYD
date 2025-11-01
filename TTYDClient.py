@@ -258,10 +258,10 @@ async def ttyd_sync_task(ctx: TTYDContext):
                     await ctx.receive_items()
                     await ctx.check_ttyd_locations()
                     goal = ctx.slot_data.get("goal", 0)
-                    if goal == 0: # Shadow Queen
+                    if goal == 1: # Shadow Queen
                         if not ctx.finished_game and gsw_check(1708) >= 18:
                             await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
-                    elif goal == 1: # Crystal Stars
+                    elif goal == 2: # Crystal Stars
                         if not ctx.finished_game and dolphin.read_byte(0x8000323B) >= ctx.slot_data["goal_stars"]:
                             await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
                     else:
