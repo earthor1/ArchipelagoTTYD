@@ -28,6 +28,14 @@ SHOP_POINTER = 0x8041EB60
 SHOP_ITEM_OFFSET = 0x2F
 SHOP_ITEM_PURCHASED = 0xD7
 
+tracker_loaded = False
+try:
+    from worlds.tracker.TrackerClient import TrackerGameContext as cmmCtx
+    tracker_loaded = True
+except ModuleNotFoundError:
+    from CommonClient import CommonContext as cmmCtx
+    tracker_loaded = False
+
 def read_string(address: int, length: int):
     try:
         return dolphin.read_bytes(address, length).decode().strip("\0")
@@ -73,7 +81,7 @@ def gsw_check(index):
 
 
 class TTYDCommandProcessor(ClientCommandProcessor):
-    def __init__(self, ctx: CommonContext):
+    def __init__(self, ctx: cmmCtx):
         super().__init__(ctx)
 
     def _cmd_set_gswf(self, bit_number: int):
@@ -96,10 +104,10 @@ class TTYDCommandProcessor(ClientCommandProcessor):
         logger.info(f"GSWF Check: {result}")
 
 
-class TTYDContext(CommonContext):
+class TTYDContext(cmmCtx):
     command_processor = TTYDCommandProcessor
     game = "Paper Mario: The Thousand-Year Door"
-    items_handling = 0b101
+    tags = {"AP"}
     dolphin_connected: bool = False
     seed_verified: bool = False
     slot_data: dict | None = {}
@@ -109,6 +117,7 @@ class TTYDContext(CommonContext):
 
     def __init__(self, server_address, password):
         super().__init__(server_address, password)
+        self.items_handling = 0b101
 
     async def server_auth(self, password_requested: bool = False):
         if password_requested and not self.password:
@@ -117,6 +126,7 @@ class TTYDContext(CommonContext):
         await self.send_connect()
 
     def on_package(self, cmd: str, args: dict):
+        super().on_package(cmd, args)
         if cmd in {"Connected"}:
             self.slot = args["slot"]
             self.slot_data = args["slot_data"]
@@ -143,15 +153,12 @@ class TTYDContext(CommonContext):
         self.seed_name = None
         self.seed_verified = False
 
-    def run_gui(self):
-        from kvui import GameManager
+    def make_gui(self) -> "type[kvui.GameManager]":
+        ui = super().make_gui()
+        ui.logging_pairs = [("Client", "Archipelago")]
+        ui.base_title = "Archipelago TTYD Client"
 
-        class TTYDManager(GameManager):
-            logging_pairs = [("Client", "Archipelago")]
-            base_title = "Archipelago TTYD Client"
-
-        self.ui = TTYDManager(self)
-        self.ui_task = asyncio.create_task(self.ui.async_run(), name="UI")
+        return ui
 
     async def receive_items(self):
         current_length = dolphin.read_word(RECEIVED_LENGTH)
@@ -313,6 +320,8 @@ def launch(*args):
         ctx = TTYDContext(args.connect, args.password)
         ctx.server_task = asyncio.create_task(server_loop(ctx), name="ServerLoop")
         if gui_enabled:
+            if tracker_loaded:  # UT Connection
+                ctx.run_generator()
             ctx.run_gui()
         ctx.run_cli()
         ctx.gl_sync_task = asyncio.create_task(ttyd_sync_task(ctx), name="Gauntlet Legends Sync Task")
