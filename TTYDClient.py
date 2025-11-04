@@ -30,7 +30,7 @@ SHOP_ITEM_PURCHASED = 0xD7
 
 tracker_loaded = False
 try:
-    from worlds.tracker.TrackerClient import TrackerGameContext as cmmCtx
+    from worlds.tracker.TrackerClient import TrackerGameContext as cmmCtx, UT_VERSION
     tracker_loaded = True
 except ModuleNotFoundError:
     from CommonClient import CommonContext as cmmCtx
@@ -156,7 +156,11 @@ class TTYDContext(cmmCtx):
     def make_gui(self) -> "type[kvui.GameManager]":
         ui = super().make_gui()
         ui.logging_pairs = [("Client", "Archipelago")]
-        ui.base_title = "Archipelago TTYD Client"
+        if tracker_loaded:
+            ui.base_title = f"Archipelago TTYD Client with {UT_VERSION}"
+        else:
+            ui.base_title = "Archipelago TTYD Client"
+
 
         return ui
 

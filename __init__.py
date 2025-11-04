@@ -30,6 +30,7 @@ components.append(
         func=launch_client,
         component_type=Type.CLIENT,
         file_identifier=SuffixIdentifier(".apttyd"),
+        description="Open the Paper Mario: The Thousand-Year Door client.",
     ),
 )
 
