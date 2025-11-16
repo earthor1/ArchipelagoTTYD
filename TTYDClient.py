@@ -244,6 +244,13 @@ async def ttyd_sync_task(ctx: TTYDContext):
         if dolphin.is_hooked() and ctx.dolphin_connected:
             if ctx.slot:
                 try:
+                    game_id = read_string(0x80000000, 6)
+                    if game_id != "G8ME01":
+                        logger.info("Connected to ROM other than US TTYD, disconnecting.")
+                        await ctx.disconnect()
+                        dolphin.un_hook()
+                        await asyncio.sleep(3)
+                        continue
                     if not ctx.seed_verified:
                         logger.info("Checking ROM seed...")
                         seed = read_string(SEED, 0x10)
