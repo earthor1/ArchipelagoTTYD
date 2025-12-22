@@ -121,7 +121,11 @@ class TTYDWorld(World):
                 self.options.palace_skip.value = slot_data["palace_skip"]
                 self.options.open_westside.value = slot_data["westside"]
                 self.options.tattlesanity.value = slot_data["tattlesanity"]
+                self.options.dazzle_rewards.value = slot_data["dazzle_rewards"]
+                self.options.star_shuffle.value = slot_data["star_shuffle"]
                 self.options.disable_intermissions.value = slot_data["disable_intermissions"]
+                self.options.piecesanity.value = slot_data["piecesanity"]
+                self.options.shinesanity.value = slot_data["shinesanity"]
                 return
         if self.options.limit_chapter_eight and self.options.palace_skip:
             logging.warning(f"{self.player_name}'s has enabled both Palace Skip and Limit Chapter 8. "
